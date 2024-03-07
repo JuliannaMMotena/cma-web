@@ -1,5 +1,0 @@
-export const colors = {
-  principal: '#007861',
-  laranja: '#E84E0F',
-  branco: '#FFFFFF'
-}

@@ -1,9 +1,7 @@
 import { Flex, Image } from '@chakra-ui/react'
-import { Textos, Input, Link, Botao } from 'componentes'
-import { useNavigate } from 'react-router-dom'
+import { Textos, Input, Botao } from 'componentes'
 
-export const TelaLogin = () => {
-  const navigate = useNavigate();
+export const TelaEsqueceuSenha = () => {
   return (
     <Flex
       flexDir="row"
@@ -23,33 +21,37 @@ export const TelaLogin = () => {
         marginTop={['50px', '138px']}
         marginLeft={['30px', '443px']}
         borderRadius="16px"
-        justifyContent="center"
+        justifyContent="flex-start"
         alignItems="center"
-        backgroundColor="brand.principal"
+        backgroundColor="brand.branco"
       >
         <Image
-          src="/img/Logo_partelaranja.svg"
+          marginTop="60px"
+          src="/img/logotipo_horizontal.svg"
           alt="CMA Logo"
-          w="250px"
-          h="213px"
+          w="304px"
+          h="80px"
         ></Image>
-        <Textos color="brand.branco" mt="10px">
-          Bem-vindo!
+        <Textos
+          paddingLeft="15px"
+          paddingTop="50px"
+          w="300px"
+          h="43px"
+          color="brand.principal"
+          mt="10px"
+        >
+          Esqueceu sua senha?
         </Textos>
-        <Textos.Subtitulo color="brand.branco" mt="6px">
-          Acesse com seu login e senha
+        <Textos.Subtitulo
+          paddingLeft="15px"
+          paddingTop="50px"
+          w="300px"
+          fontSize="14px"
+          color="brand.principal"
+        >
+          Enviaremos um código para validar sua <br /> redefinição de senha
         </Textos.Subtitulo>
         <Input.Email borderRadius="50px"></Input.Email>
-        <Input.Senha></Input.Senha>
-        <Link
-          color="brand.branco"
-          paddingLeft={['140px', '230px']}
-          fontSize="14px"
-          mt="8px"
-          onClick={() => navigate('/esqueceu-senha')}
-        >
-          Esqueci minha senha
-        </Link>
         <Botao
           color="brand.branco"
           borderStyle="solid"
@@ -57,9 +59,9 @@ export const TelaLogin = () => {
           borderWidth="2px"
           backgroundColor="brand.principal"
           _hover={{ backgroundColor: 'brand.principal' }}
-          mt="10px"
+          mt="18px"
         >
-          Entrar
+          Enviar
         </Botao>
       </Flex>
     </Flex>

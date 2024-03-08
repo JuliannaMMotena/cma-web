@@ -16,7 +16,7 @@ Input.Senha = (props) => {
   const handleClick = () => setShow(!show)
   return (
     <InputGroup
-      paddingLeft={['10px', '262px']}
+      paddingLeft={['10px', '264px']}
       size="md"
       paddingRight={['10px', '0px']}
     >
@@ -55,11 +55,7 @@ Input.Senha = (props) => {
 
 Input.Email = () => {
   return (
-    <InputGroup
-      paddingRight={['10px', '0px']}
-      paddingLeft={['10px', '262px']}
-      mt="20px"
-    >
+    <InputGroup paddingLeft={['10px', '264px']} mt="20px">
       <InputRightElement
         mt="5px"
         paddingRight={['0px', '290px']}

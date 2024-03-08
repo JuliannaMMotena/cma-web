@@ -1,11 +1,12 @@
 import { ChakraProvider } from '@chakra-ui/react'
-import { theme } from 'styles'
-import { TelaLogin } from '1.telasAntesDaAutenticacao'
+import { tema } from 'styles'
+import { RouterProvider } from 'react-router-dom'
+import { roteador } from 'roteador'
 
 function App() {
   return (
-    <ChakraProvider theme={theme}>
-      <TelaLogin />
+    <ChakraProvider theme={tema}>
+      <RouterProvider router={roteador} />
     </ChakraProvider>
   )
 }

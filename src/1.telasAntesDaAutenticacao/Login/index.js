@@ -41,7 +41,7 @@ export const TelaLogin = () => {
         <Input.Senha></Input.Senha>
         <Link
           color="brand.branco"
-          paddingLeft={['150px', '230px']}
+          paddingLeft={['140px', '230px']}
           fontSize="14px"
           mt="8px"
         >

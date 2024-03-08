@@ -15,7 +15,11 @@ Input.Senha = (props) => {
   const [show, setShow] = useState(false)
   const handleClick = () => setShow(!show)
   return (
-    <InputGroup paddingLeft="262px" size="md">
+    <InputGroup
+      paddingLeft={['10px', '262px']}
+      size="md"
+      paddingRight={['10px', '0px']}
+    >
       <Input
         w={['290px', '370px']}
         h="48px"
@@ -26,7 +30,11 @@ Input.Senha = (props) => {
         type={show ? 'text' : 'password'}
         placeholder="Digite sua senha"
       />
-      <InputRightElement paddingRight="290px" mt="15px" width="4.5rem">
+      <InputRightElement
+        paddingRight={['0px', '290px']}
+        mt="15px"
+        width="4.5rem"
+      >
         <Button
           bg="transparent"
           _hover={{ bg: 'transparent' }}
@@ -47,9 +55,21 @@ Input.Senha = (props) => {
 
 Input.Email = () => {
   return (
-    <InputGroup paddingLeft="262px" mt="20px">
-      <InputRightElement mt="5px" paddingRight="290px" pointerEvents="none">
-        <EmailIcon boxSize="17px" color="brand.laranja" />
+    <InputGroup
+      paddingRight={['10px', '0px']}
+      paddingLeft={['10px', '262px']}
+      mt="20px"
+    >
+      <InputRightElement
+        mt="5px"
+        paddingRight={['0px', '290px']}
+        pointerEvents="none"
+      >
+        <EmailIcon
+          marginRight={['33px', '0px']}
+          boxSize="17px"
+          color="brand.laranja"
+        />
       </InputRightElement>
       <Input
         w={['290px', '370px']}

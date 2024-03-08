@@ -16,10 +16,10 @@ export const TelaLogin = () => {
     >
       <Flex
         flexDir="column"
-        w="894px"
-        h="608px"
-        marginTop="138px"
-        marginLeft="443px"
+        w={['85vw', '894px']}
+        h={['85vh', '608px']}
+        marginTop={['50px', '138px']}
+        marginLeft={['30px', '443px']}
         borderRadius="16px"
         justifyContent="center"
         alignItems="center"
@@ -37,21 +37,14 @@ export const TelaLogin = () => {
         <Textos.Subtitulo color="brand.branco" mt="6px">
           Acesse com seu login e senha
         </Textos.Subtitulo>
-        <Input
-          mt="20px"
-          w="370px"
-          h="48px"
-          placeholder="E-mail"
-          borderRadius="50px"
-        ></Input>
-        <Input
-          mt="13px"
-          w="370px"
-          h="48px"
-          placeholder="Senha"
-          borderRadius="50px"
-        ></Input>
-        <Link color="brand.branco" paddingLeft="230px" fontSize="14px" mt="8px">
+        <Input.Email borderRadius="50px"></Input.Email>
+        <Input.Senha></Input.Senha>
+        <Link
+          color="brand.branco"
+          paddingLeft={['150px', '230px']}
+          fontSize="14px"
+          mt="8px"
+        >
           Esqueci minha senha
         </Link>
         <Botao

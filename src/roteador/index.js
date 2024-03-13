@@ -1,4 +1,4 @@
 import { createBrowserRouter } from 'react-router-dom'
-import { RotasAntesDaAutenticacao } from '1.telasAntesDaAutenticacao/Rotas'
+import { Rotas } from 'Rotas'
 
-export const roteador = createBrowserRouter([...RotasAntesDaAutenticacao])
+export const roteador = createBrowserRouter([...Rotas])

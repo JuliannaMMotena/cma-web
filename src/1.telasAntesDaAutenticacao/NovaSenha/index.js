@@ -1,9 +1,7 @@
 import { Flex, Image } from '@chakra-ui/react'
 import { Textos, Input, Botao } from 'componentes'
-import { useNavigate } from 'react-router-dom'
 
-export const TelaEsqueceuSenha = () => {
-  const navigate = useNavigate()
+export const TelaNovaSenha = () => {
   return (
     <Flex
       flexDir="row"
@@ -35,36 +33,45 @@ export const TelaEsqueceuSenha = () => {
           h="80px"
         ></Image>
         <Textos
-          paddingLeft="15px"
-          paddingTop="50px"
+          paddingLeft="80px"
+          paddingTop="20px"
           w="300px"
           h="43px"
           color="brand.principal"
           mt="10px"
         >
-          Esqueceu sua senha?
+          Nova Senha
         </Textos>
         <Textos.Subtitulo
-          paddingLeft="15px"
-          paddingTop="50px"
+          paddingLeft="40px"
+          paddingTop="20px"
+          paddingBottom="20px"
           w="300px"
           fontSize="14px"
           color="brand.principal"
         >
-          Enviaremos um código para validar sua <br /> redefinição de senha
+          Digite o código enviado no seu email e <br /> uma nova senha nos
+          campos abaixo:
         </Textos.Subtitulo>
-        <Input.Email borderRadius="50px"></Input.Email>
+        <Input
+          w={['290px', '370px']}
+          h="48px"
+          placeholder="Código"
+          borderRadius="50px"
+        ></Input>
+        <Input.Senha></Input.Senha>
+        <Input.ConfirmarSenha></Input.ConfirmarSenha>
         <Botao
-          onClick={() => navigate('/nova-senha')}
           color="brand.branco"
           borderStyle="solid"
           borderColor="brand.branco"
           borderWidth="2px"
           backgroundColor="brand.principal"
           _hover={{ backgroundColor: 'brand.principal' }}
-          mt="18px"
+          mt="28px"
+          w="184px"
         >
-          Enviar
+          REDEFINIR SENHA
         </Botao>
       </Flex>
     </Flex>

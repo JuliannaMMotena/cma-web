@@ -3,7 +3,7 @@ import { Textos, Input, Link, Botao } from 'componentes'
 import { useNavigate } from 'react-router-dom'
 
 export const TelaLogin = () => {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
   return (
     <Flex
       flexDir="row"
@@ -20,8 +20,8 @@ export const TelaLogin = () => {
         flexDir="column"
         w={['85vw', '894px']}
         h={['85vh', '608px']}
-        marginTop={['50px', '138px']}
-        marginLeft={['30px', '443px']}
+        marginTop={['50px', '108px']}
+        marginLeft={['30px', '395px']}
         borderRadius="16px"
         justifyContent="center"
         alignItems="center"
@@ -59,7 +59,7 @@ export const TelaLogin = () => {
           _hover={{ backgroundColor: 'brand.principal' }}
           mt="10px"
         >
-          Entrar
+          ENTRAR
         </Botao>
       </Flex>
     </Flex>

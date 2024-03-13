@@ -78,5 +78,48 @@ Input.Email = () => {
   )
 }
 
+Input.ConfirmarSenha = (props) => {
+  const [show, setShow] = useState(false)
+  const handleClick = () => setShow(!show)
+  return (
+    <InputGroup
+      paddingLeft={['10px', '264px']}
+      size="md"
+      paddingRight={['10px', '0px']}
+    >
+      <Input
+        w={['290px', '370px']}
+        h="48px"
+        borderRadius="50px"
+        mt="10px"
+        backgroundColor="brand.cinza"
+        pr="4.5rem"
+        type={show ? 'text' : 'password'}
+        placeholder="Confirme sua nova senha"
+      />
+      <InputRightElement
+        paddingRight={['0px', '290px']}
+        mt="15px"
+        width="4.5rem"
+      >
+        <Button
+          bg="transparent"
+          _hover={{ bg: 'transparent' }}
+          h="1.75rem"
+          size="sm"
+          onClick={handleClick}
+        >
+          {show ? (
+            <ViewOffIcon boxSize="18px" color="brand.laranja" />
+          ) : (
+            <ViewIcon boxSize="18px" color="brand.laranja" />
+          )}
+        </Button>
+      </InputRightElement>
+    </InputGroup>
+  )
+}
+
 Input.Senha.displayName = 'InputSenha'
 Input.Email.displayName = 'InputEmail'
+Input.ConfirmarSenha.displayName = 'InputConfirmarSenha'

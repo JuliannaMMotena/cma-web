@@ -11,6 +11,10 @@ export const Input = (props) => (
   <ChakraInput backgroundColor="brand.cinza" {...props} />
 )
 
+Input.Campo = (props) => (
+  <ChakraInput h="36px" borderRadius="16px" bg="brand.branco" {...props} />
+)
+
 Input.Senha = (props) => {
   const [show, setShow] = useState(false)
   const handleClick = () => setShow(!show)
@@ -123,3 +127,4 @@ Input.ConfirmarSenha = (props) => {
 Input.Senha.displayName = 'InputSenha'
 Input.Email.displayName = 'InputEmail'
 Input.ConfirmarSenha.displayName = 'InputConfirmarSenha'
+Input.Campo.displayName = 'InputCampo'

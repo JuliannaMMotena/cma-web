@@ -4,5 +4,6 @@ export const colors = {
   branco: '#FFFFFF',
   cinza: '#EFEDED',
   preto: '#000000',
+  cinzaescuro: '#9D9D9D',
   rosa: '#F8999F'
 }

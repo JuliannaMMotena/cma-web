@@ -57,147 +57,29 @@ export const TelaInicial = () => {
             Bem-vinda, Yasmin!
           </Textos>
           <Flex paddingLeft="130px" flexDir="column">
-            <Botao
-              w="250px"
-              h="48px"
-              color="brand.rosa"
-              borderStyle="solid"
-              borderColor="brand.laranja"
-              borderWidth="2px"
-              backgroundColor="brand.branco"
-              _hover={{ backgroundColor: 'brand.laranja' }}
-              mt="18px"
-              alignItems="center"
-            >
-              REPORT LEAD
-            </Botao>
-            <Botao
-              w="250px"
-              h="48px"
-              color="brand.rosa"
-              borderStyle="solid"
-              borderColor="brand.laranja"
-              borderWidth="2px"
-              backgroundColor="brand.branco"
-              _hover={{ backgroundColor: 'brand.laranja' }}
-              mt="18px"
-              alignItems="center"
-            >
-              REPORT CLIENTE
-            </Botao>
-            <Botao
-              w="250px"
-              h="48px"
-              color="brand.rosa"
-              borderStyle="solid"
-              borderColor="brand.laranja"
-              borderWidth="2px"
-              backgroundColor="brand.branco"
-              _hover={{ backgroundColor: 'brand.laranja' }}
-              mt="18px"
-              alignItems="center"
-            >
-              REPORT FECHAMENTO
-            </Botao>
-            <Botao
-              w="250px"
-              h="48px"
-              color="brand.rosa"
-              borderStyle="solid"
-              borderColor="brand.laranja"
-              borderWidth="2px"
-              backgroundColor="brand.branco"
-              _hover={{ backgroundColor: 'brand.laranja' }}
-              mt="18px"
-              alignItems="center"
-            >
-              RELATÓRIOS OPERACIONAIS
-            </Botao>
-            <Botao
-              w="250px"
-              h="48px"
-              color="brand.rosa"
-              borderStyle="solid"
-              borderColor="brand.laranja"
-              borderWidth="2px"
-              backgroundColor="brand.branco"
-              _hover={{ backgroundColor: 'brand.laranja' }}
-              mt="18px"
-              alignItems="center"
-            >
-              DASHBOARD
-            </Botao>
+            <Botao.BordaLaranja>REPORT LEAD</Botao.BordaLaranja>
+            <Botao.BordaLaranja>REPORT CLIENTE</Botao.BordaLaranja>
+            <Botao.BordaLaranja>REPORT FECHAMENTO</Botao.BordaLaranja>
+            <Botao.BordaLaranja>RELATÓRIOS OPERACIONAIS</Botao.BordaLaranja>
+            <Botao.BordaLaranja>DASHBOARD</Botao.BordaLaranja>
           </Flex>
         </Flex>
         <Flex flexDir="column" paddingLeft="20px" h="250px">
-          <Botao
-            w="231px"
-            h="30px"
-            color="brand.rosa"
-            borderStyle="solid"
-            borderColor="brand.laranja"
-            borderWidth="2px"
-            backgroundColor="brand.branco"
-            _hover={{ backgroundColor: 'brand.laranja' }}
-            alignItems="center"
+          <Botao.BordaLaranjaMenor
             onClick={() => navigate('/primeiro-cadastro-lead')}
           >
             CADASTRAR NOVO LEAD
-          </Botao>
-          <Botao
-            w="231px"
-            h="30px"
-            color="brand.rosa"
-            borderStyle="solid"
-            borderColor="brand.laranja"
-            borderWidth="2px"
-            backgroundColor="brand.branco"
-            _hover={{ backgroundColor: 'brand.laranja' }}
-            alignItems="center"
-            marginBottom="6px"
-          >
+          </Botao.BordaLaranjaMenor>
+          <Botao.BordaLaranjaMenor>
             BUSCAR LEAD POR NOME
-          </Botao>
-          <Botao
-            w="231px"
-            h="30px"
-            color="brand.rosa"
-            borderStyle="solid"
-            borderColor="brand.laranja"
-            borderWidth="2px"
-            backgroundColor="brand.branco"
-            _hover={{ backgroundColor: 'brand.laranja' }}
-            alignItems="center"
-          >
-            AVALIAÇÃO TÉCNICA
-          </Botao>
-          <Botao
-            w="231px"
-            h="30px"
-            color="brand.branco"
-            borderStyle="solid"
-            borderColor="brand.laranja"
-            borderWidth="2px"
-            backgroundColor="brand.branco"
-            _hover={{ backgroundColor: 'brand.laranja' }}
-            alignItems="center"
-            marginBottom="6px"
-          >
-            ORÇAMENTOS
-          </Botao>
-          <Botao
-            w="231px"
-            h="30px"
-            color="brand.branco"
-            borderStyle="solid"
-            borderColor="brand.laranja"
-            borderWidth="2px"
-            backgroundColor="brand.branco"
-            _hover={{ backgroundColor: 'brand.laranja' }}
-            alignItems="center"
-          >
-            EMITIR RECIBO
-          </Botao>
+          </Botao.BordaLaranjaMenor>
+          <Flex paddingTop="7px">
+            <Botao.BordaLaranjaMenor>AVALIAÇÃO TÉCNICA</Botao.BordaLaranjaMenor>
+          </Flex>
+          <Botao.BordaLaranjaMenor>ORÇAMENTOS</Botao.BordaLaranjaMenor>
+          <Flex paddingTop="7px">
+            <Botao.BordaLaranjaMenor>EMITIR RECIBO</Botao.BordaLaranjaMenor>
+          </Flex>
         </Flex>
       </Flex>
       <Flex
@@ -209,31 +91,8 @@ export const TelaInicial = () => {
         justifyContent="flex-end"
         flexDir="row"
       >
-        <Botao
-          w="250px"
-          h="48px"
-          color="brand.branco"
-          borderBottom="2px solid white"
-          backgroundColor="transparent"
-          _hover={{ backgroundColor: 'transparent' }}
-          alignItems="center"
-          borderRadius="0px"
-          marginRight="30px"
-        >
-          VISITAS DO DIA
-        </Botao>
-        <Botao
-          w="250px"
-          h="48px"
-          color="brand.branco"
-          borderBottom="2px solid white"
-          backgroundColor="transparent"
-          _hover={{ backgroundColor: 'transparent' }}
-          alignItems="center"
-          borderRadius="0px"
-        >
-          MANUTENÇÃO PREVENTIVA
-        </Botao>
+        <Botao.Sublinhado marginRight="15px">VISITAS DO DIA</Botao.Sublinhado>
+        <Botao.Sublinhado>MANUTENÇÃO PREVENTIVA</Botao.Sublinhado>
       </Flex>
     </Flex>
   )

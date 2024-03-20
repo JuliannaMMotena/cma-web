@@ -11,8 +11,18 @@ export const Input = (props) => (
   <ChakraInput backgroundColor="brand.cinza" {...props} />
 )
 
-Input.Campo = (props) => (
-  <ChakraInput h="36px" borderRadius="16px" bg="brand.branco" {...props} />
+Input.Campo = ({ value, onChange, id, name, ...props }) => (
+  <ChakraInput
+    fontSize="14px"
+    h="36px"
+    borderRadius="16px"
+    bg="brand.branco"
+    value={value}
+    onChange={onChange}
+    id={id}
+    name={name}
+    {...props}
+  />
 )
 
 Input.Senha = (props) => {

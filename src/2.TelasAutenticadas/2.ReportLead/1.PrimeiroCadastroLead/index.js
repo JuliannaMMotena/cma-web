@@ -1,12 +1,76 @@
-import { Flex, Image, Icon } from '@chakra-ui/react'
-import { Textos, Botao, Campo, Input } from 'componentes'
+import { Flex, Image, Icon, Button } from '@chakra-ui/react'
+import { Textos, Botao, Input } from 'componentes'
 import { CiEdit } from 'react-icons/ci'
 import { RiSave3Fill } from 'react-icons/ri'
 import { IoArrowBack } from 'react-icons/io5'
+import { CgAddR } from 'react-icons/cg'
 import { useNavigate } from 'react-router-dom'
+import { useFormik } from 'formik'
+import * as Yup from 'yup'
 
 export const TelaPrimeiroCadastroLead = () => {
   const navigate = useNavigate()
+
+  const { handleSubmit, values, handleChange, errors } = useFormik({
+    initialValues: {
+      CNPJCPF: '',
+      NOME: '',
+      DATACONTATO: '',
+      ENDEREÇO: '',
+      NUMERO: '',
+      COMPLEMENTO: '',
+      CEP: '',
+      BAIRRO: '',
+      CIDADE: '',
+      ESTADO: '',
+      TELEFONE: '',
+      CELULAR: '',
+      EMAIL: '',
+      DATAVISITAPREVISTA: '',
+      VALORTOTAL: '',
+      TIPODEEQUIPAMENTO: '',
+      DEFEITO: '',
+      MARCA: '',
+      MODELO: ''
+    },
+    validationSchema: Yup.object({
+      CNPJCPF: Yup.number()
+        .min(11, 'Dado deve ter ao menos 11 caracteres.')
+        .required('Preenchimento obrigatório.'),
+      NOME: Yup.string().required('Preenchimento obrigatório.'),
+      DATACONTATO: Yup.date().required('Preenchimento obrigatório.'),
+      ENDEREÇO: Yup.string()
+        .min(5, 'Endereço deve ter ao menos 5 caracteres.')
+        .required('Preenchimento obrigatório.'),
+      NUMERO: Yup.number().required('Preenchimento obrigatório.'),
+      COMPLEMENTO: Yup.string(),
+      CEP: Yup.number().min(8, 'CEP deve ter ao menos 8 caracteres.'),
+      BAIRRO: Yup.string().min(3, 'Bairro deve ter ao menos 3 caracteres.'),
+      CIDADE: Yup.string()
+        .min(3, 'Cidade deve ter ao menos 3 caracteres.')
+        .required('Preenchimento obrigatório.'),
+      ESTADO: Yup.string()
+        .min(3, 'Estado deve ter ao menos 3 caracteres.')
+        .required('Preenchimento obrigatório.'),
+      TELEFONE: Yup.number(),
+      CELULAR: Yup.number()
+        .min(11, 'Inserir DDD + número do celular.')
+        .required('Preenchimento obrigatório.'),
+      EMAIL: Yup.string().email('E-mail inválido.'),
+      DATAVISITAPREVISTA: Yup.date(),
+      VALORTOTAL: Yup.number(),
+      TIPODEEQUIPAMENTO: Yup.string().required('Preenchimento obrigatório.'),
+      DEFEITO: Yup.string().required('Preenchimento obrigatório.'),
+      MARCA: Yup.string().required('Preenchimento obrigatório.'),
+      MODELO: Yup.string().required('Preenchimento obrigatório.')
+    }),
+    onSubmit: (dados) => {
+      console.log({ dados })
+    }
+  })
+
+  console.log({ values, errors })
+
   return (
     <Flex
       flexDir="row"
@@ -83,130 +147,296 @@ export const TelaPrimeiroCadastroLead = () => {
         <Flex color="brand.branco">
           <span>DADOS PESSOAIS</span>
         </Flex>
-        <Flex w="87vw" flexDir="column">
-          <Flex h="0px" marginBottom="0px" marginLeft="52px" marginTop="5px">
-            <Textos.Subtitulo2 marginTop="5px" color="#007861">
-              CNPJ/CPF:
-            </Textos.Subtitulo2>
-          </Flex>
-          <Input.Campo left="137px" w="160px"></Input.Campo>
-          <Flex h="0px" marginTop=" 0px" marginLeft="1170">
-            <Textos.Subtitulo2 color="#007861">
-              DATA DO CONTATO:
-            </Textos.Subtitulo2>
-          </Flex>
-          <Campo marginLeft="637px" top="45px" w="130px"></Campo>
-          <Flex position="absolute" paddingLeft="1345px" paddingTop="15px">
-            <Textos.Subtitulo2>00/00/00</Textos.Subtitulo2>
-          </Flex>
-          <Flex h="0px" marginBottom="0px" marginTop="-12px" marginLeft="350px">
-            <Textos.Subtitulo2 color="#007861">
-              NOME COMPLETO <br /> OU RAZÃO SOCIAL:
-            </Textos.Subtitulo2>
-            <Textos.Subtitulo2 color="brand.laranja">*</Textos.Subtitulo2>
-          </Flex>
-          <Campo top="45px" left="915px" w="630px"></Campo>
-          <Flex position="absolute" paddingLeft="510px" paddingTop="15px">
-            <Textos.Subtitulo2>Instituto Mouta Motena</Textos.Subtitulo2>
-          </Flex>
-          <Flex h="0px" marginTop="45px" marginLeft="27px">
-            <Textos.Subtitulo2 color="#007861">
-              ENDEREÇO DE <br /> COBRANÇA:
-            </Textos.Subtitulo2>
-            <Textos.Subtitulo2 color="brand.laranja"> *</Textos.Subtitulo2>
-          </Flex>
-          <Campo top="90px" left="596px" w="41vw"></Campo>
-          <Flex position="absolute" paddingLeft="155px" paddingTop="60px">
-            <Textos.Subtitulo2>Alameda das Angélicas</Textos.Subtitulo2>
-          </Flex>
-          <Flex h="0px" marginTop="12px" marginLeft="880">
-            <Textos.Subtitulo2 color="#007861">NÚMERO:</Textos.Subtitulo2>
-            <Textos.Subtitulo2 color="brand.laranja">*</Textos.Subtitulo2>
-          </Flex>
-          <Campo marginLeft="257px" top="90px" w="92px"></Campo>
-          <Flex position="absolute" paddingLeft="985px" paddingTop="60px">
-            <Textos.Subtitulo2>257</Textos.Subtitulo2>
-          </Flex>
-          <Flex h="0px" marginTop="0px" marginLeft="1090px">
-            <Textos.Subtitulo2 color="#007861">COMPLEMENTO:</Textos.Subtitulo2>
-            <Textos.Subtitulo2 color="gray" marginLeft="5px">
-              Exemplo de texto
-            </Textos.Subtitulo2>
-          </Flex>
-          <Campo marginLeft="587px" top="90px" w="238px"></Campo>
-          <Flex position="absolute" paddingLeft="1220px" paddingTop="60px">
-            <Textos.Subtitulo2></Textos.Subtitulo2>
+        <Flex paddingLeft="100px" flexDir="column">
+          <Flex paddingLeft="17px" alignItems="baseline" w="90vw" flexDir="row">
+            <Flex w="300px">
+              <Flex w="120px" color="#007861">
+                <label htmlFor="CNPJCPF" style={{ textAlign: 'right' }}>
+                  CNPJ OU CPF:
+                </label>
+              </Flex>
+              <Flex color="#E84E0F">
+                <label htmlFor="CNPJCPF" style={{ textAlign: 'right' }}>
+                  *
+                </label>
+              </Flex>
+              <Input.Campo
+                focusBorderColor="#EFEDED"
+                marginLeft="10px"
+                id="CNPJCPF"
+                name="CNPJCPF"
+                value={values.CNPJCPF}
+                onChange={handleChange}
+              />
+            </Flex>
+            <Flex marginLeft="30px" paddingTop="5px" w="750px">
+              <Flex w="220px" color="#007861">
+                <label htmlFor="NOME" style={{ textAlign: 'right' }}>
+                  NOME COMPLETO OU RAZÃO SOCIAL:
+                </label>
+              </Flex>
+              <Flex marginTop="12px" color="#E84E0F">
+                <label htmlFor="NOME" style={{ textAlign: 'right' }}>
+                  *
+                </label>
+              </Flex>
+              <Input.Campo
+                focusBorderColor="#EFEDED"
+                marginLeft="10px"
+                id="NOME"
+                name="NOME"
+                value={values.NOME}
+                onChange={handleChange}
+              />
+            </Flex>
+            <Flex paddingRight="80px" paddingLeft="50px" w="350px">
+              <Flex w="120px" color="#007861">
+                <label htmlFor="DATACONTATO" style={{ textAlign: 'right' }}>
+                  DATA DO CONTATO:
+                </label>
+              </Flex>
+              <Flex marginTop="12px" color="#E84E0F">
+                <label htmlFor="DATACONTATO" style={{ textAlign: 'right' }}>
+                  *
+                </label>
+              </Flex>
+              <Input.Campo
+                focusBorderColor="#EFEDED"
+                marginLeft="10px"
+                id="DATACONTATO"
+                name="DATACONTATO"
+                value={values.DATACONTATO}
+                onChange={handleChange}
+              />
+            </Flex>
           </Flex>
           <Flex
-            h="0px"
-            w="10px"
-            marginTop="44px"
-            marginLeft="90"
-            right="0px"
-            marginRight="0px"
+            paddingTop="5px"
+            paddingLeft="0px"
+            alignItems="baseline"
+            w="80vw"
+            flexDir="row"
           >
-            <Textos.Subtitulo2 color="#007861">CEP:</Textos.Subtitulo2>
-            <Textos.Subtitulo2 color="brand.laranja">*</Textos.Subtitulo2>
+            <Flex paddingLeft="17px">
+              <Flex color="#007861">
+                <label htmlFor="ENDEREÇO" style={{ textAlign: 'right' }}>
+                  ENDEREÇO <br /> COBRANÇA:
+                </label>
+              </Flex>
+              <Flex color="#E84E0F">
+                <label htmlFor="ENDEREÇO" style={{ textAlign: 'right' }}>
+                  *
+                </label>
+              </Flex>
+              <Input.Campo
+                focusBorderColor="#EFEDED"
+                w="630px"
+                marginLeft="10px"
+                id="ENDEREÇO"
+                name="ENDEREÇO"
+                value={values.ENDEREÇO}
+                onChange={handleChange}
+              />
+            </Flex>
+            <Flex>
+              <Flex paddingLeft="50px" w="100px" color="#007861">
+                <label htmlFor="NUMERO" style={{ textAlign: 'right' }}>
+                  NÚMERO:
+                </label>
+              </Flex>
+              <Flex marginLeft="10px" color="#E84E0F">
+                <label htmlFor="NUMERO" style={{ textAlign: 'right' }}>
+                  *
+                </label>
+              </Flex>
+              <Input.Campo
+                focusBorderColor="#EFEDED"
+                w="120px"
+                marginLeft="10px"
+                id="NUMERO"
+                name="NUMERO"
+                value={values.NUMERO}
+                onChange={handleChange}
+              />
+            </Flex>
+            <Flex paddingLeft="50px">
+              <Flex w="120px" color="#007861">
+                <label htmlFor="COMPLEMENTO" style={{ textAlign: 'right' }}>
+                  COMPLEMENTO:
+                </label>
+              </Flex>
+
+              <Input.Campo
+                focusBorderColor="#EFEDED"
+                w="220px"
+                marginLeft="20px"
+                right="25px"
+                id="COMPLEMENTO"
+                name="COMPLEMENTO"
+                value={values.COMPLEMENTO}
+                onChange={handleChange}
+              />
+            </Flex>
           </Flex>
-          <Campo top="135px" left="300px" w="6vw"></Campo>
-          <Flex position="absolute" paddingLeft="155px" paddingTop="105px">
-            <Textos.Subtitulo2>18.055-130</Textos.Subtitulo2>
+          <Flex paddingTop="5px" alignItems="baseline" w="80vw" flexDir="row">
+            <Flex paddingLeft="65px">
+              <Flex color="#007861">
+                <label htmlFor="CEP" style={{ textAlign: 'right' }}>
+                  CEP:
+                </label>
+              </Flex>
+              <Input.Campo
+                focusBorderColor="#EFEDED"
+                w="130px"
+                marginLeft="15px"
+                id="CEP"
+                name="CEP"
+                value={values.CEP}
+                onChange={handleChange}
+              />
+            </Flex>
+            <Flex marginLeft="45px">
+              <Flex color="#007861">
+                <label htmlFor="BAIRRO" style={{ textAlign: 'right' }}>
+                  BAIRRO:
+                </label>
+              </Flex>
+              <Input.Campo
+                focusBorderColor="#EFEDED"
+                w="360px"
+                marginLeft="10px"
+                id="BAIRRO"
+                name="BAIRRO"
+                value={values.BAIRRO}
+                onChange={handleChange}
+              />
+            </Flex>
+            <Flex marginLeft="45px">
+              <Flex color="#007861">
+                <label htmlFor="CIDADE" style={{ textAlign: 'right' }}>
+                  CIDADE:
+                </label>
+              </Flex>
+              <Flex color="#E84E0F">
+                <label htmlFor="CIDADE" style={{ textAlign: 'right' }}>
+                  *
+                </label>
+              </Flex>
+              <Input.Campo
+                focusBorderColor="#EFEDED"
+                w="360px"
+                marginLeft="10px"
+                id="CIDADE"
+                name="CIDADE"
+                value={values.CIDADE}
+                onChange={handleChange}
+              />
+            </Flex>
+            <Flex marginLeft="45px">
+              <Flex color="#007861">
+                <label htmlFor="ESTADO" style={{ textAlign: 'right' }}>
+                  ESTADO:
+                </label>
+              </Flex>
+              <Flex color="#E84E0F">
+                <label htmlFor="ESTADO" style={{ textAlign: 'right' }}>
+                  *
+                </label>
+              </Flex>
+              <Input.Campo
+                focusBorderColor="#EFEDED"
+                w="80px"
+                marginLeft="10px"
+                id="ESTADO"
+                name="ESTADO"
+                value={values.ESTADO}
+                onChange={handleChange}
+              />
+            </Flex>
           </Flex>
-          <Flex h="0px" marginTop="0px" marginLeft="285px">
-            <Textos.Subtitulo2 color="#007861">BAIRRO:</Textos.Subtitulo2>
+          <Flex paddingTop="10px" alignItems="baseline" w="80vw" flexDir="row">
+            <Flex paddingLeft="30px">
+              <Flex color="#007861">
+                <label htmlFor="TELEFONE" style={{ textAlign: 'right' }}>
+                  TELEFONE:
+                </label>
+              </Flex>
+              <Input.Campo
+                focusBorderColor="#EFEDED"
+                w="200px"
+                marginLeft="10px"
+                id="TELEFONE"
+                name="TELEFONE"
+                value={values.TELEFONE}
+                onChange={handleChange}
+              />
+            </Flex>
+            <Flex marginLeft="45px">
+              <Flex color="#007861">
+                <label htmlFor="CELULAR" style={{ textAlign: 'right' }}>
+                  CELULAR:
+                </label>
+              </Flex>
+              <Flex color="#E84E0F">
+                <label htmlFor="CELULAR" style={{ textAlign: 'right' }}>
+                  *
+                </label>
+              </Flex>
+              <Input.Campo
+                focusBorderColor="#EFEDED"
+                w="200px"
+                marginLeft="10px"
+                id="CELULAR"
+                name="CELULAR"
+                value={values.CELULAR}
+                onChange={handleChange}
+              />
+            </Flex>
+            <Flex marginLeft="45px">
+              <Flex w="50px" color="#007861">
+                <label htmlFor="EMAIL" style={{ textAlign: 'right' }}>
+                  E-MAIL:
+                </label>
+              </Flex>
+              <Flex color="#E84E0F">
+                <label htmlFor="EMAIL" style={{ textAlign: 'right' }}>
+                  *
+                </label>
+              </Flex>
+              <Input.Campo
+                focusBorderColor="#EFEDED"
+                w="630px"
+                marginLeft="10px"
+                id="EMAIL"
+                name="EMAIL"
+                value={values.EMAIL}
+                onChange={handleChange}
+              />
+            </Flex>
           </Flex>
-          <Campo top="135px" left="655px" w="400px"></Campo>
-          <Flex position="absolute" paddingLeft="360px" paddingTop="105px">
-            <Textos.Subtitulo2>Jardim Simus</Textos.Subtitulo2>
-          </Flex>
-          <Flex h="0px" marginTop="0px" marginLeft="790px">
-            <Textos.Subtitulo2 color="#007861">CIDADE:</Textos.Subtitulo2>
-            <Textos.Subtitulo2 color="brand.laranja">*</Textos.Subtitulo2>
-          </Flex>
-          <Campo top="135px" w="400px" left="1170px"></Campo>
-          <Flex position="absolute" marginLeft="880px" marginTop="105px">
-            <Textos.Subtitulo2>Sorocaba</Textos.Subtitulo2>
-          </Flex>
-          <Flex h="0px" marginTop="0px" marginLeft="1300px">
-            <Textos.Subtitulo2 color="#007861">ESTADO:</Textos.Subtitulo2>
-            <Textos.Subtitulo2 color="brand.laranja">*</Textos.Subtitulo2>
-          </Flex>
-          <Campo top="135px" w="70px" left="1520px"></Campo>
-          <Flex position="absolute" marginLeft="1385px" marginTop="105px">
-            <Textos.Subtitulo2>SP</Textos.Subtitulo2>
-          </Flex>
-          <Flex h="0px" marginTop="42px" marginLeft="58px">
-            <Textos.Subtitulo2 color="#007861">TELEFONE:</Textos.Subtitulo2>
-          </Flex>
-          <Campo top="180px" w="160px" left="330px"></Campo>
-          <Flex paddingLeft="155px" position="absolute" paddingTop="150px">
-            <Textos.Subtitulo2>Não possui</Textos.Subtitulo2>
-          </Flex>
-          <Flex h="0px" marginTop="0px" marginLeft="358px">
-            <Textos.Subtitulo2 color="#007861">CELULAR:</Textos.Subtitulo2>
-            <Textos.Subtitulo2 color="brand.laranja">*</Textos.Subtitulo2>
-          </Flex>
-          <Campo top="180px" w="160px" left="630px"></Campo>
-          <Flex paddingLeft="455px" position="absolute" paddingTop="150px">
-            <Textos.Subtitulo2>+55 15 99116-6336</Textos.Subtitulo2>
-          </Flex>
-          <Flex h="0px" marginTop="0px" marginLeft="658px">
-            <Textos.Subtitulo2 color="#007861">E-MAIL:</Textos.Subtitulo2>
-            <Textos.Subtitulo2 color="brand.laranja">*</Textos.Subtitulo2>
-          </Flex>
-          <Campo top="180px" w="720px" left="1198px"></Campo>
-          <Flex paddingLeft="750px" position="absolute" paddingTop="150px">
-            <Textos.Subtitulo2>juliannacmota@yahoo.com.br</Textos.Subtitulo2>
-          </Flex>
-          <Flex h="0px" marginTop="17px" marginLeft="870px" paddingTop="25px">
-            <Textos.Subtitulo2 color="#007861">
-              MESMO ENDEREÇO DE ENTREGA
-            </Textos.Subtitulo2>
-          </Flex>
-          <Flex h="0px" marginTop="0px" marginLeft="1160px" p>
-            <Textos.Subtitulo2 color="#007861">
-              CADASTRAR NOVO ENDEREÇO DE ENTREGA
-            </Textos.Subtitulo2>
+          <Flex
+            display="flex"
+            justifyContent="flex-end"
+            alignItems="baseline"
+            w="80vw"
+            paddingTop="10px"
+          >
+            <Flex>
+              <input type="checkbox" />
+            </Flex>
+            <Flex paddingLeft="5px">
+              <Textos.Subtitulo2 color="#007861">
+                MESMO ENDEREÇO DE ENTREGA
+              </Textos.Subtitulo2>
+            </Flex>
+            <Flex paddingLeft="60px">
+              <input type="checkbox" />
+            </Flex>
+            <Flex paddingLeft="5px">
+              <Textos.Subtitulo2 color="#007861">
+                CADASTRAR ENDEREÇO DE ENTREGA
+              </Textos.Subtitulo2>
+            </Flex>
           </Flex>
         </Flex>
       </Flex>
@@ -215,7 +445,7 @@ export const TelaPrimeiroCadastroLead = () => {
         h="20px"
         backgroundColor="#007861"
         position="absolute"
-        top="450px"
+        top="460px"
         left="95px"
         borderRadius="16px"
       />
@@ -223,7 +453,7 @@ export const TelaPrimeiroCadastroLead = () => {
         flexDir="column"
         w="100vw"
         h="0px"
-        top="450px"
+        top="460px"
         alignItems="center"
         position="absolute"
         fontSize="14px"
@@ -231,223 +461,226 @@ export const TelaPrimeiroCadastroLead = () => {
         <Flex color="brand.branco">
           <span>INFORMAÇÕES DO EQUIPAMENTO</span>
         </Flex>
-        <Flex w="87vw" flexDir="column">
-          <Flex
-            h="0px"
-            marginBottom="0px"
-            marginTop="2px"
-            textAlign="right"
-            marginLeft="44px"
-          >
-            <Textos.Subtitulo2 color="#007861">
-              DEFEITO <br /> INFORMADO:
-            </Textos.Subtitulo2>
-          </Flex>
-          <Campo top="45px" left="388px" w="275px"></Campo>
-          <Flex position="absolute" paddingLeft="155px" paddingTop="15px">
-            <Textos.Subtitulo2>Instalação</Textos.Subtitulo2>
-          </Flex>
-          <Flex
-            h="0px"
-            marginBottom="0px"
-            marginTop="2px"
-            textAlign="right"
-            marginLeft="454px"
-          >
-            <Textos.Subtitulo2 color="#007861">
-              TIPO DE <br /> EQUIPAMENTO:
-            </Textos.Subtitulo2>
-            <Textos.Subtitulo2 color="brand.laranja">*</Textos.Subtitulo2>
-          </Flex>
-          <Campo top="45px" left="815px" w="275px"></Campo>
-          <Flex position="absolute" paddingLeft="580px" paddingTop="15px">
-            <Textos.Subtitulo2>Gerador</Textos.Subtitulo2>
-          </Flex>
-          <Flex
-            h="0px"
-            marginBottom="0px"
-            marginTop="12px"
-            textAlign="right"
-            marginLeft="900px"
-          >
-            <Textos.Subtitulo2 color="#007861">MARCA:</Textos.Subtitulo2>
-            <Textos.Subtitulo2 color="brand.laranja">*</Textos.Subtitulo2>
-          </Flex>
-          <Campo top="45px" left="1165px" w="180px"></Campo>
-          <Flex
-            position="absolute"
-            paddingLeft="985px"
-            paddingTop="15px"
-            h="0px"
-          >
-            <Textos.Subtitulo2>MWM</Textos.Subtitulo2>
-          </Flex>
-          <Flex
-            h="0px"
-            marginBottom="0px"
-            marginTop="0px"
-            textAlign="right"
-            marginLeft="1195px"
-          >
-            <Textos.Subtitulo2 color="#007861">MODELO:</Textos.Subtitulo2>
-            <Textos.Subtitulo2 color="brand.laranja">*</Textos.Subtitulo2>
-          </Flex>
-          <Campo top="45px" left="1470px" w="180px"></Campo>
-          <Flex
-            position="absolute"
-            paddingLeft="1285px"
-            paddingTop="15px"
-            h="0px"
-          >
-            <Textos.Subtitulo2>40 KVA</Textos.Subtitulo2>
-          </Flex>
-          <Flex
-            position="absolute"
-            paddingLeft="90px"
-            paddingTop="30px"
-            h="0px"
-            marginBottom="0px"
-            marginTop="32px"
-            textAlign="right"
-          >
-            <Textos.Subtitulo2 color="#007861">PEÇA:</Textos.Subtitulo2>
-          </Flex>
-          <Campo top="90px" left="612px" w="725px"></Campo>
-          <Flex position="absolute" paddingLeft="155px" paddingTop="60px">
-            <Textos.Subtitulo2>Filtro de Ar</Textos.Subtitulo2>
-          </Flex>
-          <Flex
-            position="absolute"
-            paddingLeft="915px"
-            paddingTop="30px"
-            h="0px"
-            marginBottom="0px"
-            marginTop="32px"
-            textAlign="right"
-          >
-            <Textos.Subtitulo2 color="#007861">QUANTIDADE:</Textos.Subtitulo2>
-            <Textos.Subtitulo2 color="brand.laranja">*</Textos.Subtitulo2>
-          </Flex>
-          <Campo top="90px" left="1165px" w="70px"></Campo>
-          <Flex position="absolute" paddingLeft="1048px" paddingTop="60px">
-            <Textos.Subtitulo2>01</Textos.Subtitulo2>
-          </Flex>
-          <Flex
-            position="absolute"
-            paddingLeft="1150px"
-            paddingTop="30px"
-            h="0px"
-            marginBottom="0px"
-            marginTop="32px"
-            textAlign="right"
-          >
-            <Textos.Subtitulo2 color="#007861">
-              VALOR DA PEÇA:
-            </Textos.Subtitulo2>
-            <Textos.Subtitulo2 color="brand.laranja">*</Textos.Subtitulo2>
-          </Flex>
-          <Campo top="90px" left="1470px" w="180px"></Campo>
-          <Flex position="absolute" paddingLeft="1285px" paddingTop="60px">
-            <Textos.Subtitulo2>R$ 2.000,00</Textos.Subtitulo2>
-          </Flex>
-          <Flex
-            position="absolute"
-            paddingLeft="48px"
-            paddingTop="17px"
-            h="0px"
-            marginBottom="0px"
-            marginTop="75px"
-            textAlign="right"
-          >
-            <Textos.Subtitulo2 color="#007861">
-              VALOR MÃO- <br /> -DE-OBRA:
-            </Textos.Subtitulo2>
-            <Textos.Subtitulo2 color="brand.laranja">*</Textos.Subtitulo2>
-          </Flex>
-          <Campo top="135px" left="388px" w="275px"></Campo>
-          <Flex position="absolute" paddingLeft="155px" paddingTop="105px">
-            <Textos.Subtitulo2>R$ 2.000,00</Textos.Subtitulo2>
-          </Flex>
-          <Flex
-            position="absolute"
-            paddingLeft="458px"
-            paddingTop="92px"
-            h="0px"
-            marginBottom="0px"
-            marginTop="2px"
-            textAlign="right"
-          >
-            <Textos.Subtitulo2 color="#007861">
-              DATA DE VISITA <br /> PREVISTA:
-            </Textos.Subtitulo2>
-            <Textos.Subtitulo2 color="brand.laranja">*</Textos.Subtitulo2>
-          </Flex>
-          <Input.Campo
-            placeholder="dd/mm/aa"
-            top="82px"
-            left="570px"
-            w="275px"
-          ></Input.Campo>
-          <Flex position="absolute" paddingLeft="580px" paddingTop="105px">
-            <Textos.Subtitulo2></Textos.Subtitulo2>
-          </Flex>
-          <Flex
-            position="absolute"
-            paddingLeft="1150px"
-            paddingTop="65px"
-            h="0px"
-            marginBottom="0px"
-            marginTop="28px"
-            textAlign="right"
-          >
-            <Textos.Subtitulo2 fontWeight="bold" color="#007861">
-              VALOR TOTAL DO <br /> ORÇAMENTO*:
-            </Textos.Subtitulo2>
-          </Flex>
-          <Flex
-            position="absolute"
-            top="117px"
-            right="135px"
-            borderStyle="solid"
-            borderColor="brand.laranja"
-            borderWidth="3px"
-            borderRadius="50px"
-            backgroundColor="brand.branco"
-            h="36px"
-            w="180px"
-          ></Flex>
-          <Flex>
-            <Textos.Subtitulo2
+        <Flex marginRight="190px" flexDir="row" paddingTop="15px">
+          <CgAddR color="#E84E0F" />
+          <Flex marginLeft="0px">
+            <Button
+              fontWeight="regular"
+              h="16px"
+              w="196px"
+              fontSize="14px"
               position="absolute"
               color="brand.laranja"
-              fontWeight="bold"
-              display="flex"
-              justifyContent="center"
-              alignItems="center"
-              textAlign="center"
-              paddingLeft="1290px"
-              paddingTop="88px"
+              backgroundColor="transparent"
             >
-              R$ 2.600,00
-            </Textos.Subtitulo2>
+              ADICIONAR EQUIPAMENTO
+            </Button>
           </Flex>
+        </Flex>
+        <Flex
+          w="87vw"
+          h="1px"
+          backgroundColor="#007861"
+          position="absolute"
+          top="65px"
+          left="95px"
+          borderRadius="16px"
+        />
+        <Flex flexDir="column">
           <Flex
-            cursor="pointer"
-            color="brand.laranja"
-            paddingLeft="1340px"
-            paddingTop="120px"
-            alignItems="baseline"
+            paddingTop="35px"
+            marginRight="0px"
+            display="flex"
+            justifyContent="center"
+            w="90vw"
+            flexDir="row"
           >
-            <Icon boxSize="28px" as={CiEdit}></Icon>
-            <Icon paddingLeft="10px" boxSize="34px" as={RiSave3Fill}></Icon>
-            <Icon
-              onClick={() => navigate('/tela-inicial')}
-              paddingLeft="10px"
-              boxSize="34px"
-              as={IoArrowBack}
-            ></Icon>
+            <Flex>
+              <Flex paddingLeft="55px" color="#007861">
+                <label htmlFor="VALORMAODEOBRA" style={{ textAlign: 'right' }}>
+                  VALOR MÃO- <br /> -DE-OBRA*:
+                </label>
+              </Flex>
+              <Flex color="#E84E0F">
+                <label htmlFor="VALORMAODEOBRA" style={{ textAlign: 'right' }}>
+                  *
+                </label>
+              </Flex>
+              <Input.Campo
+                focusBorderColor="#EFEDED"
+                fontWeight="extrabold"
+                w="135px"
+                marginLeft="5px"
+                id="VALORMAODEOBRA"
+                name="VALORMAODEOBRA"
+                value={values.VALORMAODEOBRA}
+                onChange={handleChange}
+              />
+            </Flex>
+            <Flex marginLeft="40px">
+              <Flex color="#007861">
+                <label htmlFor="DATAVISITA:" style={{ textAlign: 'right' }}>
+                  DATA DE VISITA <br /> PREVISTA:
+                </label>
+              </Flex>
+              <Input.Campo
+                focusBorderColor="#EFEDED"
+                fontWeight="extrabold"
+                w="135px"
+                marginLeft="5px"
+                id="DATAVISITA"
+                name="DATAVISITA"
+                value={values.DATAVISITA}
+                onChange={handleChange}
+              />
+            </Flex>
+            <Flex marginLeft="40px">
+              <Flex fontWeight="extrabold" color="#007861">
+                <label htmlFor="VALORTOTAL:" style={{ textAlign: 'right' }}>
+                  VALOR TOTAL DO <br /> ORÇAMENTO::
+                </label>
+              </Flex>
+              <Flex color="#E84E0F">
+                <label htmlFor="VALORTOTAL" style={{ textAlign: 'right' }}>
+                  *
+                </label>
+              </Flex>
+              <Input.Campo
+                focusBorderColor="#007861"
+                fontWeight="extrabold"
+                color="brand.laranja"
+                borderStyle="solid"
+                borderColor="#007861"
+                borderWidth="2px"
+                w="135px"
+                marginLeft="5px"
+                id="VALORTOTAL"
+                name="VALORTOTAL"
+                value={values.VALORTOTAL}
+                onChange={handleChange}
+              />
+            </Flex>
+            <Flex marginLeft="40px" color="brand.laranja" alignItems="center">
+              <Icon cursor="pointer" boxSize="28px" as={CiEdit}></Icon>
+              <Icon
+                cursor="pointer"
+                onClick={handleSubmit}
+                paddingLeft="10px"
+                boxSize="34px"
+                as={RiSave3Fill}
+              ></Icon>
+              <Icon
+                cursor="pointer"
+                onClick={() => navigate('/tela-inicial')}
+                paddingLeft="10px"
+                boxSize="34px"
+                as={IoArrowBack}
+              ></Icon>
+            </Flex>
           </Flex>
-          <Flex marginTop="-12px" paddingLeft="1110px">
+
+          {/* <Flex
+            paddingTop="25px"
+            marginRight="0px"
+            display="flex"
+            alignItems="baseline"
+            w="90vw"
+            flexDir="row"
+          >
+            <Flex>
+              <Flex paddingLeft="55px" color="#007861">
+                <label
+                  htmlFor="TIPODEEQUIPAMENTO"
+                  style={{ textAlign: 'right' }}
+                >
+                  TIPO DE <br /> EQUIPAMENTO:
+                </label>
+              </Flex>
+              <Flex color="#E84E0F">
+                <label
+                  htmlFor="TIPODEEQUIPAMENTO"
+                  style={{ textAlign: 'right' }}
+                >
+                  *
+                </label>
+              </Flex>
+              <Input.Campo
+                focusBorderColor="#EFEDED"
+                w="235px"
+                marginLeft="5px"
+                id="TIPODEEQUIPAMENTO"
+                name="TIPODEEQUIPAMENTO"
+                value={values.TIPODEEQUIPAMENTO}
+                onChange={handleChange}
+              />
+            </Flex>
+            <Flex marginLeft="40px">
+              <Flex color="#007861">
+                <label htmlFor="DEFEITO" style={{ textAlign: 'right' }}>
+                  DEFEITO:
+                </label>
+              </Flex>
+              <Flex color="#E84E0F">
+                <label htmlFor="DEFEITO" style={{ textAlign: 'right' }}>
+                  *
+                </label>
+              </Flex>
+              <Input.Campo
+                focusBorderColor="#EFEDED"
+                w="235px"
+                marginLeft="5px"
+                id="DEFEITO"
+                name="DEFEITO"
+                value={values.DEFEITO}
+                onChange={handleChange}
+              />
+            </Flex>
+            <Flex marginLeft="40px">
+              <Flex color="#007861">
+                <label htmlFor="MARCA" style={{ textAlign: 'right' }}>
+                  MARCA:
+                </label>
+              </Flex>
+              <Flex color="#E84E0F">
+                <label htmlFor="MARCA" style={{ textAlign: 'right' }}>
+                  *
+                </label>
+              </Flex>
+              <Input.Campo
+                focusBorderColor="#EFEDED"
+                w="235px"
+                marginLeft="5px"
+                id="MARCA"
+                name="MARCA"
+                value={values.MARCA}
+                onChange={handleChange}
+              />
+            </Flex>
+            <Flex marginLeft="40px">
+              <Flex color="#007861">
+                <label htmlFor="MODELO" style={{ textAlign: 'right' }}>
+                  MODELO:
+                </label>
+              </Flex>
+              <Flex color="#E84E0F">
+                <label htmlFor="MODELO" style={{ textAlign: 'right' }}>
+                  *
+                </label>
+              </Flex>
+              <Input.Campo
+                focusBorderColor="#EFEDED"
+                w="235px"
+                marginLeft="5px"
+                id="MODELO"
+                name="MODELO"
+                value={values.MODELO}
+                onChange={handleChange}
+              />
+            </Flex>
+          </Flex> */}
+        </Flex>
+        <Flex w="87vw" flexDir="column">
+          <Flex marginTop="5px" paddingLeft="1110px">
             <Botao.BordaCinza fontSize="16px">
               GERAR O.S. DE ORÇAMENTO APROVADO
             </Botao.BordaCinza>

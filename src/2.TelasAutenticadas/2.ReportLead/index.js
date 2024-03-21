@@ -1,1 +1,1 @@
-export * from './1.PrimeiroCadastroLead'
+export * from './1.CadastroLead'

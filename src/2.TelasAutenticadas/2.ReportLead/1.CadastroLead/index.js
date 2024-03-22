@@ -1,5 +1,5 @@
 import { Flex, Image, Icon, Button } from '@chakra-ui/react'
-import { Textos, Input, Botao } from 'componentes'
+import { Textos, Input, Botao, Footer } from 'componentes'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import { CiEdit } from 'react-icons/ci'
@@ -7,9 +7,15 @@ import { RiSave3Fill } from 'react-icons/ri'
 import { IoArrowBack } from 'react-icons/io5'
 import { CgAddR } from 'react-icons/cg'
 import { useNavigate } from 'react-router-dom'
+import React, { useState } from 'react'
 
 export const TelaCadastroLead = () => {
   const navigate = useNavigate()
+  const [novoEndereco, setNovoEndereco] = useState(false)
+
+  const handleNovoEndereco = () => {
+    setNovoEndereco(!novoEndereco)
+  }
 
   const { handleSubmit, values, handleChange, errors } = useFormik({
     initialValues: {
@@ -430,7 +436,7 @@ export const TelaCadastroLead = () => {
                   </Textos.Subtitulo2>
                 </Flex>
                 <Flex paddingLeft="60px">
-                  <input type="checkbox" />
+                  <input onChange={handleNovoEndereco} type="checkbox" />
                 </Flex>
                 <Flex paddingLeft="5px">
                   <Textos.Subtitulo2 color="#007861">
@@ -438,164 +444,177 @@ export const TelaCadastroLead = () => {
                   </Textos.Subtitulo2>
                 </Flex>
               </Flex>
-              <Flex
-                w="87vw"
-                h="1px"
-                backgroundColor="#007861"
-                position="absolute"
-                top="240px"
-                left="95px"
-                borderRadius="16px"
-              />
-              <Flex
-                paddingTop="25px"
-                paddingLeft="0px"
-                alignItems="baseline"
-                w="80vw"
-                flexDir="row"
-              >
-                <Flex paddingLeft="17px">
-                  <Flex color="#007861">
-                    <label htmlFor="ENDEREÇO" style={{ textAlign: 'right' }}>
-                      ENDEREÇO <br /> COBRANÇA:
-                    </label>
-                  </Flex>
-                  <Flex color="#E84E0F">
-                    <label htmlFor="ENDEREÇO" style={{ textAlign: 'right' }}>
-                      *
-                    </label>
-                  </Flex>
-                  <Input.Campo
-                    focusBorderColor="#EFEDED"
-                    w="630px"
-                    marginLeft="10px"
-                    id="ENDEREÇO"
-                    name="ENDEREÇO"
-                    value={values.ENDEREÇO}
-                    onChange={handleChange}
+              {novoEndereco && (
+                <Flex flexDir="column">
+                  <Flex
+                    w="87vw"
+                    h="1px"
+                    backgroundColor="#007861"
+                    position="absolute"
+                    top="240px"
+                    left="95px"
+                    borderRadius="16px"
                   />
-                </Flex>
-                <Flex>
-                  <Flex paddingLeft="50px" w="100px" color="#007861">
-                    <label htmlFor="NUMERO" style={{ textAlign: 'right' }}>
-                      NÚMERO:
-                    </label>
-                  </Flex>
-                  <Flex marginLeft="10px" color="#E84E0F">
-                    <label htmlFor="NUMERO" style={{ textAlign: 'right' }}>
-                      *
-                    </label>
-                  </Flex>
-                  <Input.Campo
-                    focusBorderColor="#EFEDED"
-                    w="120px"
-                    marginLeft="10px"
-                    id="NUMERO"
-                    name="NUMERO"
-                    value={values.NUMERO}
-                    onChange={handleChange}
-                  />
-                </Flex>
-                <Flex paddingLeft="50px">
-                  <Flex w="120px" color="#007861">
-                    <label htmlFor="COMPLEMENTO" style={{ textAlign: 'right' }}>
-                      COMPLEMENTO:
-                    </label>
-                  </Flex>
+                  <Flex
+                    paddingTop="25px"
+                    paddingLeft="0px"
+                    alignItems="baseline"
+                    w="80vw"
+                    flexDir="row"
+                  >
+                    <Flex paddingLeft="17px">
+                      <Flex color="#007861">
+                        <label
+                          htmlFor="ENDEREÇO"
+                          style={{ textAlign: 'right' }}
+                        >
+                          ENDEREÇO <br /> COBRANÇA:
+                        </label>
+                      </Flex>
+                      <Flex color="#E84E0F">
+                        <label
+                          htmlFor="ENDEREÇO"
+                          style={{ textAlign: 'right' }}
+                        >
+                          *
+                        </label>
+                      </Flex>
+                      <Input.Campo
+                        focusBorderColor="#EFEDED"
+                        w="630px"
+                        marginLeft="10px"
+                        id="ENDEREÇO"
+                        name="ENDEREÇO"
+                        value={values.ENDEREÇO}
+                        onChange={handleChange}
+                      />
+                    </Flex>
+                    <Flex>
+                      <Flex paddingLeft="50px" w="100px" color="#007861">
+                        <label htmlFor="NUMERO" style={{ textAlign: 'right' }}>
+                          NÚMERO:
+                        </label>
+                      </Flex>
+                      <Flex marginLeft="10px" color="#E84E0F">
+                        <label htmlFor="NUMERO" style={{ textAlign: 'right' }}>
+                          *
+                        </label>
+                      </Flex>
+                      <Input.Campo
+                        focusBorderColor="#EFEDED"
+                        w="120px"
+                        marginLeft="10px"
+                        id="NUMERO"
+                        name="NUMERO"
+                        value={values.NUMERO}
+                        onChange={handleChange}
+                      />
+                    </Flex>
+                    <Flex paddingLeft="50px">
+                      <Flex w="120px" color="#007861">
+                        <label
+                          htmlFor="COMPLEMENTO"
+                          style={{ textAlign: 'right' }}
+                        >
+                          COMPLEMENTO:
+                        </label>
+                      </Flex>
 
-                  <Input.Campo
-                    focusBorderColor="#EFEDED"
-                    w="220px"
-                    marginLeft="20px"
-                    right="25px"
-                    id="COMPLEMENTO"
-                    name="COMPLEMENTO"
-                    value={values.COMPLEMENTO}
-                    onChange={handleChange}
-                  />
+                      <Input.Campo
+                        focusBorderColor="#EFEDED"
+                        w="220px"
+                        marginLeft="20px"
+                        right="25px"
+                        id="COMPLEMENTO"
+                        name="COMPLEMENTO"
+                        value={values.COMPLEMENTO}
+                        onChange={handleChange}
+                      />
+                    </Flex>
+                  </Flex>
+                  <Flex
+                    paddingTop="5px"
+                    alignItems="baseline"
+                    w="80vw"
+                    flexDir="row"
+                  >
+                    <Flex paddingLeft="65px">
+                      <Flex color="#007861">
+                        <label htmlFor="CEP" style={{ textAlign: 'right' }}>
+                          CEP:
+                        </label>
+                      </Flex>
+                      <Input.Campo
+                        focusBorderColor="#EFEDED"
+                        w="130px"
+                        marginLeft="15px"
+                        id="CEP"
+                        name="CEP"
+                        value={values.CEP}
+                        onChange={handleChange}
+                      />
+                    </Flex>
+                    <Flex marginLeft="45px">
+                      <Flex color="#007861">
+                        <label htmlFor="BAIRRO" style={{ textAlign: 'right' }}>
+                          BAIRRO:
+                        </label>
+                      </Flex>
+                      <Input.Campo
+                        focusBorderColor="#EFEDED"
+                        w="360px"
+                        marginLeft="10px"
+                        id="BAIRRO"
+                        name="BAIRRO"
+                        value={values.BAIRRO}
+                        onChange={handleChange}
+                      />
+                    </Flex>
+                    <Flex marginLeft="45px">
+                      <Flex color="#007861">
+                        <label htmlFor="CIDADE" style={{ textAlign: 'right' }}>
+                          CIDADE:
+                        </label>
+                      </Flex>
+                      <Flex color="#E84E0F">
+                        <label htmlFor="CIDADE" style={{ textAlign: 'right' }}>
+                          *
+                        </label>
+                      </Flex>
+                      <Input.Campo
+                        focusBorderColor="#EFEDED"
+                        w="360px"
+                        marginLeft="10px"
+                        id="CIDADE"
+                        name="CIDADE"
+                        value={values.CIDADE}
+                        onChange={handleChange}
+                      />
+                    </Flex>
+                    <Flex marginLeft="45px">
+                      <Flex color="#007861">
+                        <label htmlFor="ESTADO" style={{ textAlign: 'right' }}>
+                          ESTADO:
+                        </label>
+                      </Flex>
+                      <Flex color="#E84E0F">
+                        <label htmlFor="ESTADO" style={{ textAlign: 'right' }}>
+                          *
+                        </label>
+                      </Flex>
+                      <Input.Campo
+                        focusBorderColor="#EFEDED"
+                        w="80px"
+                        marginLeft="10px"
+                        id="ESTADO"
+                        name="ESTADO"
+                        value={values.ESTADO}
+                        onChange={handleChange}
+                      />
+                    </Flex>
+                  </Flex>
                 </Flex>
-              </Flex>
-              <Flex
-                paddingTop="5px"
-                alignItems="baseline"
-                w="80vw"
-                flexDir="row"
-              >
-                <Flex paddingLeft="65px">
-                  <Flex color="#007861">
-                    <label htmlFor="CEP" style={{ textAlign: 'right' }}>
-                      CEP:
-                    </label>
-                  </Flex>
-                  <Input.Campo
-                    focusBorderColor="#EFEDED"
-                    w="130px"
-                    marginLeft="15px"
-                    id="CEP"
-                    name="CEP"
-                    value={values.CEP}
-                    onChange={handleChange}
-                  />
-                </Flex>
-                <Flex marginLeft="45px">
-                  <Flex color="#007861">
-                    <label htmlFor="BAIRRO" style={{ textAlign: 'right' }}>
-                      BAIRRO:
-                    </label>
-                  </Flex>
-                  <Input.Campo
-                    focusBorderColor="#EFEDED"
-                    w="360px"
-                    marginLeft="10px"
-                    id="BAIRRO"
-                    name="BAIRRO"
-                    value={values.BAIRRO}
-                    onChange={handleChange}
-                  />
-                </Flex>
-                <Flex marginLeft="45px">
-                  <Flex color="#007861">
-                    <label htmlFor="CIDADE" style={{ textAlign: 'right' }}>
-                      CIDADE:
-                    </label>
-                  </Flex>
-                  <Flex color="#E84E0F">
-                    <label htmlFor="CIDADE" style={{ textAlign: 'right' }}>
-                      *
-                    </label>
-                  </Flex>
-                  <Input.Campo
-                    focusBorderColor="#EFEDED"
-                    w="360px"
-                    marginLeft="10px"
-                    id="CIDADE"
-                    name="CIDADE"
-                    value={values.CIDADE}
-                    onChange={handleChange}
-                  />
-                </Flex>
-                <Flex marginLeft="45px">
-                  <Flex color="#007861">
-                    <label htmlFor="ESTADO" style={{ textAlign: 'right' }}>
-                      ESTADO:
-                    </label>
-                  </Flex>
-                  <Flex color="#E84E0F">
-                    <label htmlFor="ESTADO" style={{ textAlign: 'right' }}>
-                      *
-                    </label>
-                  </Flex>
-                  <Input.Campo
-                    focusBorderColor="#EFEDED"
-                    w="80px"
-                    marginLeft="10px"
-                    id="ESTADO"
-                    name="ESTADO"
-                    value={values.ESTADO}
-                    onChange={handleChange}
-                  />
-                </Flex>
-              </Flex>
+              )}
             </Flex>
           </Flex>
           <Flex left="0px" top="200px">
@@ -877,23 +896,12 @@ export const TelaCadastroLead = () => {
           </Flex>
         </Flex>
       </Flex>
-      <Flex
-        flexDir="row"
-        backgroundColor="brand.principal"
-        backgroundImage="url('/img/fotofundo_telalogin.svg')"
-        backgroundRepeat="no-repeat"
-        backgroundPosition="center"
-        backgroundSize="cover"
-        w="100vw"
-        h="14vh"
-        position="sticky"
-        bottom="0px"
-        left="0px"
-        right="0px"
-        zIndex="99"
-      >
+      <Flex>
+        <Footer />
+      </Flex>
+      <Flex>
         <Flex
-          pb="30px"
+          pb="0px"
           pl="170px"
           left="0"
           bottom="0"

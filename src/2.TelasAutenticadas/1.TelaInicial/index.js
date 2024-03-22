@@ -65,9 +65,7 @@ export const TelaInicial = () => {
           </Flex>
         </Flex>
         <Flex flexDir="column" paddingLeft="20px" h="250px">
-          <Botao.BordaLaranjaMenor
-            onClick={() => navigate('/primeiro-cadastro-lead')}
-          >
+          <Botao.BordaLaranjaMenor onClick={() => navigate('/cadastro-lead')}>
             CADASTRAR NOVO LEAD
           </Botao.BordaLaranjaMenor>
           <Botao.BordaLaranjaMenor>

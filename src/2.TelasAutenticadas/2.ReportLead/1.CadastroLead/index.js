@@ -11,10 +11,20 @@ import React, { useState } from 'react'
 
 export const TelaCadastroLead = () => {
   const navigate = useNavigate()
-  const [novoEndereco, setNovoEndereco] = useState(false)
+  const [openEndereco, setOpenEndereco] = useState(false)
+  const [openAdicionarEqto, setOpenAdicionarEqto] = useState(false)
+  const [openAdicionarPeca, setOpenAdicionarPeca] = useState(false)
 
-  const handleNovoEndereco = () => {
-    setNovoEndereco(!novoEndereco)
+  const handleEndereco = () => {
+    setOpenEndereco(!openEndereco)
+  }
+
+  const handleAdicionarEqto = () => {
+    setOpenAdicionarEqto(!openAdicionarEqto)
+  }
+
+  const handleAdicionarPeca = () => {
+    setOpenAdicionarPeca(!openAdicionarPeca)
   }
 
   const { handleSubmit, values, handleChange, errors } = useFormik({
@@ -444,7 +454,7 @@ export const TelaCadastroLead = () => {
                   </Textos.Subtitulo2>
                 </Flex>
                 <Flex paddingLeft="60px">
-                  <input onChange={handleNovoEndereco} type="checkbox" />
+                  <input onChange={handleEndereco} type="checkbox" />
                 </Flex>
                 <Flex paddingLeft="5px">
                   <Textos.Subtitulo2 color="#007861">
@@ -452,12 +462,12 @@ export const TelaCadastroLead = () => {
                   </Textos.Subtitulo2>
                 </Flex>
               </Flex>
-              {novoEndereco && (
+              {openEndereco && (
                 <Flex flexDir="column">
                   <Flex
                     w="87vw"
                     h="1px"
-                    backgroundColor="#007861"
+                    backgroundColor="brand.principal"
                     position="absolute"
                     top="240px"
                     left="95px"
@@ -471,7 +481,7 @@ export const TelaCadastroLead = () => {
                     flexDir="row"
                   >
                     <Flex paddingLeft="17px">
-                      <Flex color="#007861">
+                      <Flex color="brand.principal">
                         <label
                           htmlFor="ENDEREÇO"
                           style={{ textAlign: 'right' }}
@@ -631,7 +641,7 @@ export const TelaCadastroLead = () => {
               h="20px"
               backgroundColor="#007861"
               position="absolute"
-              top="560px"
+              top={openEndereco ? '560px' : '440'}
               left="95px"
               borderRadius="16px"
             />
@@ -640,7 +650,7 @@ export const TelaCadastroLead = () => {
               flexDir="column"
               w="100vw"
               h="0px"
-              top="560px"
+              top={openEndereco ? '560px' : '440'}
               alignItems="center"
               position="absolute"
               fontSize="14px"
@@ -648,199 +658,224 @@ export const TelaCadastroLead = () => {
               <Flex color="brand.branco">
                 <span>INFORMAÇÕES DO EQUIPAMENTO</span>
               </Flex>
-              <Flex
-                paddingTop="5px"
-                marginRight="0px"
-                display="flex"
-                alignItems="baseline"
-                w="90vw"
-                flexDir="row"
-              >
-                <Flex>
-                  <Flex paddingLeft="55px" color="#007861">
-                    <label
-                      htmlFor="TIPODEEQUIPAMENTO"
-                      style={{ textAlign: 'right' }}
-                    >
-                      TIPO DE <br /> EQUIPAMENTO:
-                    </label>
-                  </Flex>
-                  <Flex color="#E84E0F">
-                    <label
-                      htmlFor="TIPODEEQUIPAMENTO"
-                      style={{ textAlign: 'right' }}
-                    >
-                      *
-                    </label>
-                  </Flex>
-                  <Input.Campo
-                    focusBorderColor="#EFEDED"
-                    w="235px"
-                    marginLeft="5px"
-                    id="TIPODEEQUIPAMENTO"
-                    name="TIPODEEQUIPAMENTO"
-                    value={values.TIPODEEQUIPAMENTO}
-                    onChange={handleChange}
-                  />
-                </Flex>
-                <Flex marginLeft="40px">
-                  <Flex color="#007861">
-                    <label htmlFor="DEFEITO" style={{ textAlign: 'right' }}>
-                      DEFEITO:
-                    </label>
-                  </Flex>
-                  <Flex color="#E84E0F">
-                    <label htmlFor="DEFEITO" style={{ textAlign: 'right' }}>
-                      *
-                    </label>
-                  </Flex>
-                  <Input.Campo
-                    focusBorderColor="#EFEDED"
-                    w="235px"
-                    marginLeft="5px"
-                    id="DEFEITO"
-                    name="DEFEITO"
-                    value={values.DEFEITO}
-                    onChange={handleChange}
-                  />
-                </Flex>
-                <Flex marginLeft="40px">
-                  <Flex color="#007861">
-                    <label htmlFor="MARCA" style={{ textAlign: 'right' }}>
-                      MARCA:
-                    </label>
-                  </Flex>
-                  <Flex color="#E84E0F">
-                    <label htmlFor="MARCA" style={{ textAlign: 'right' }}>
-                      *
-                    </label>
-                  </Flex>
-                  <Input.Campo
-                    focusBorderColor="#EFEDED"
-                    w="235px"
-                    marginLeft="5px"
-                    id="MARCA"
-                    name="MARCA"
-                    value={values.MARCA}
-                    onChange={handleChange}
-                  />
-                </Flex>
-                <Flex marginLeft="40px">
-                  <Flex color="#007861">
-                    <label htmlFor="MODELO" style={{ textAlign: 'right' }}>
-                      MODELO:
-                    </label>
-                  </Flex>
-                  <Flex color="#E84E0F">
-                    <label htmlFor="MODELO" style={{ textAlign: 'right' }}>
-                      *
-                    </label>
-                  </Flex>
-                  <Input.Campo
-                    focusBorderColor="#EFEDED"
-                    w="235px"
-                    marginLeft="5px"
-                    id="MODELO"
-                    name="MODELO"
-                    value={values.MODELO}
-                    onChange={handleChange}
-                  />
-                </Flex>
-              </Flex>
-              <Flex
-                paddingTop="5px"
-                marginRight="0px"
-                display="flex"
-                alignItems="baseline"
-                w="90vw"
-                flexDir="row"
-              >
-                <Flex paddingLeft="110px">
-                  <Flex paddingLeft="55px" color="#007861">
-                    <label htmlFor="PEÇA" style={{ textAlign: 'right' }}>
-                      PEÇA:
-                    </label>
-                  </Flex>
-                  <Input.Campo
-                    focusBorderColor="#EFEDED"
-                    w="235px"
-                    marginLeft="5px"
-                    id="PEÇA"
-                    name="PEÇA"
-                    value={values.PEÇA}
-                    onChange={handleChange}
-                  />
-                </Flex>
-                <Flex marginLeft="40px">
-                  <Flex color="#007861">
-                    <label htmlFor="QUANTIDADE" style={{ textAlign: 'right' }}>
-                      QUANTIDADE:
-                    </label>
-                  </Flex>
-                  <Input.Campo
-                    focusBorderColor="#EFEDED"
-                    w="75px"
-                    marginLeft="5px"
-                    id="QUANTIDADE"
-                    name="QUANTIDADE"
-                    value={values.QUANTIDADE}
-                    onChange={handleChange}
-                  />
-                </Flex>
-                <Flex marginLeft="40px">
-                  <Flex color="#007861">
-                    <label htmlFor="VALORPEÇA" style={{ textAlign: 'right' }}>
-                      VALOR DA PEÇA:
-                    </label>
-                  </Flex>
-
-                  <Input.Campo
-                    focusBorderColor="#EFEDED"
-                    w="135px"
-                    marginLeft="5px"
-                    id="VALORPEÇA"
-                    name="VALORPEÇA"
-                    value={values.VALORPEÇA}
-                    onChange={handleChange}
-                  />
-                </Flex>
-                <Flex marginLeft="40px">
-                  <Flex color="#007861">
-                    <label
-                      htmlFor="TIPOCONSERTO"
-                      style={{ textAlign: 'right' }}
-                    >
-                      TIPO DE CONSERTO:
-                    </label>
-                  </Flex>
-                  <Input.Campo
-                    focusBorderColor="#EFEDED"
-                    w="235px"
-                    marginLeft="5px"
-                    id="TIPOCONSERTO"
-                    name="TIPOCONSERTO"
-                    value={values.TIPOCONSERTO}
-                    onChange={handleChange}
-                  />
-                </Flex>
-              </Flex>
-              <Flex marginRight="190px" flexDir="row" paddingTop="20px">
-                <CgAddR color="#E84E0F" />
-                <Flex marginLeft="0px">
-                  <Button
-                    fontWeight="regular"
-                    h="16px"
-                    w="196px"
-                    fontSize="14px"
-                    position="absolute"
-                    color="brand.laranja"
-                    backgroundColor="transparent"
+              {openAdicionarEqto && (
+                <Flex flexDir="column">
+                  <Flex
+                    paddingTop="5px"
+                    marginRight="0px"
+                    display="flex"
+                    alignItems="baseline"
+                    w="90vw"
+                    flexDir="row"
                   >
-                    ADICIONAR PEÇA
-                  </Button>
+                    <Flex>
+                      <Flex paddingLeft="55px" color="#007861">
+                        <label
+                          htmlFor="TIPODEEQUIPAMENTO"
+                          style={{ textAlign: 'right' }}
+                        >
+                          TIPO DE <br /> EQUIPAMENTO:
+                        </label>
+                      </Flex>
+                      <Flex color="#E84E0F">
+                        <label
+                          htmlFor="TIPODEEQUIPAMENTO"
+                          style={{ textAlign: 'right' }}
+                        >
+                          *
+                        </label>
+                      </Flex>
+                      <Input.Campo
+                        focusBorderColor="#EFEDED"
+                        w="235px"
+                        marginLeft="5px"
+                        id="TIPODEEQUIPAMENTO"
+                        name="TIPODEEQUIPAMENTO"
+                        value={values.TIPODEEQUIPAMENTO}
+                        onChange={handleChange}
+                      />
+                    </Flex>
+                    <Flex marginLeft="40px">
+                      <Flex color="#007861">
+                        <label htmlFor="DEFEITO" style={{ textAlign: 'right' }}>
+                          DEFEITO:
+                        </label>
+                      </Flex>
+                      <Flex color="#E84E0F">
+                        <label htmlFor="DEFEITO" style={{ textAlign: 'right' }}>
+                          *
+                        </label>
+                      </Flex>
+                      <Input.Campo
+                        focusBorderColor="#EFEDED"
+                        w="235px"
+                        marginLeft="5px"
+                        id="DEFEITO"
+                        name="DEFEITO"
+                        value={values.DEFEITO}
+                        onChange={handleChange}
+                      />
+                    </Flex>
+                    <Flex marginLeft="40px">
+                      <Flex color="#007861">
+                        <label htmlFor="MARCA" style={{ textAlign: 'right' }}>
+                          MARCA:
+                        </label>
+                      </Flex>
+                      <Flex color="#E84E0F">
+                        <label htmlFor="MARCA" style={{ textAlign: 'right' }}>
+                          *
+                        </label>
+                      </Flex>
+                      <Input.Campo
+                        focusBorderColor="#EFEDED"
+                        w="235px"
+                        marginLeft="5px"
+                        id="MARCA"
+                        name="MARCA"
+                        value={values.MARCA}
+                        onChange={handleChange}
+                      />
+                    </Flex>
+                    <Flex marginLeft="40px">
+                      <Flex color="#007861">
+                        <label htmlFor="MODELO" style={{ textAlign: 'right' }}>
+                          MODELO:
+                        </label>
+                      </Flex>
+                      <Flex color="#E84E0F">
+                        <label htmlFor="MODELO" style={{ textAlign: 'right' }}>
+                          *
+                        </label>
+                      </Flex>
+                      <Input.Campo
+                        focusBorderColor="#EFEDED"
+                        w="235px"
+                        marginLeft="5px"
+                        id="MODELO"
+                        name="MODELO"
+                        value={values.MODELO}
+                        onChange={handleChange}
+                      />
+                    </Flex>
+                  </Flex>
+                  {openAdicionarPeca && (
+                    <Flex flexDir="column">
+                      <Flex
+                        marginRight="0px"
+                        display="flex"
+                        alignItems="baseline"
+                        w="90vw"
+                        flexDir="row"
+                        paddingTop="5px"
+                      >
+                        <Flex paddingLeft="110px">
+                          <Flex paddingLeft="55px" color="#007861">
+                            <label
+                              htmlFor="PEÇA"
+                              style={{ textAlign: 'right' }}
+                            >
+                              PEÇA:
+                            </label>
+                          </Flex>
+                          <Input.Campo
+                            focusBorderColor="#EFEDED"
+                            w="235px"
+                            marginLeft="5px"
+                            id="PEÇA"
+                            name="PEÇA"
+                            value={values.PEÇA}
+                            onChange={handleChange}
+                          />
+                        </Flex>
+                        <Flex marginLeft="40px">
+                          <Flex color="#007861">
+                            <label
+                              htmlFor="QUANTIDADE"
+                              style={{ textAlign: 'right' }}
+                            >
+                              QUANTIDADE:
+                            </label>
+                          </Flex>
+                          <Input.Campo
+                            focusBorderColor="#EFEDED"
+                            w="75px"
+                            marginLeft="5px"
+                            id="QUANTIDADE"
+                            name="QUANTIDADE"
+                            value={values.QUANTIDADE}
+                            onChange={handleChange}
+                          />
+                        </Flex>
+                        <Flex marginLeft="40px">
+                          <Flex color="#007861">
+                            <label
+                              htmlFor="VALORPEÇA"
+                              style={{ textAlign: 'right' }}
+                            >
+                              VALOR DA PEÇA:
+                            </label>
+                          </Flex>
+
+                          <Input.Campo
+                            focusBorderColor="#EFEDED"
+                            w="135px"
+                            marginLeft="5px"
+                            id="VALORPEÇA"
+                            name="VALORPEÇA"
+                            value={values.VALORPEÇA}
+                            onChange={handleChange}
+                          />
+                        </Flex>
+                        <Flex marginLeft="40px">
+                          <Flex color="#007861">
+                            <label
+                              htmlFor="TIPOCONSERTO"
+                              style={{ textAlign: 'right' }}
+                            >
+                              TIPO DE CONSERTO:
+                            </label>
+                          </Flex>
+                          <Input.Campo
+                            focusBorderColor="#EFEDED"
+                            w="235px"
+                            marginLeft="5px"
+                            id="TIPOCONSERTO"
+                            name="TIPOCONSERTO"
+                            value={values.TIPOCONSERTO}
+                            onChange={handleChange}
+                          />
+                        </Flex>
+                      </Flex>
+                    </Flex>
+                  )}
+                  <Flex
+                    display="flex"
+                    justifyContent="center"
+                    marginRight="190px"
+                    flexDir="row"
+                    paddingTop={openAdicionarPeca ? '10px' : '5px'}
+                  >
+                    <CgAddR color="#E84E0F" />
+                    <Flex marginLeft="15px">
+                      <Button
+                        fontWeight="regular"
+                        h="16px"
+                        w="196px"
+                        fontSize="14px"
+                        position="absolute"
+                        color="brand.laranja"
+                        backgroundColor="transparent"
+                        onClick={handleAdicionarPeca}
+                      >
+                        ADICIONAR PEÇA
+                      </Button>
+                    </Flex>
+                  </Flex>
                 </Flex>
-              </Flex>
-              <Flex
+              )}
+
+              {/* <Flex
                 paddingTop="15px"
                 marginRight="0px"
                 display="flex"
@@ -938,8 +973,8 @@ export const TelaCadastroLead = () => {
                     onChange={handleChange}
                   />
                 </Flex>
-              </Flex>
-              <Flex marginRight="190px" flexDir="row" paddingTop="20px">
+              </Flex> */}
+              {/* <Flex marginRight="190px" flexDir="row" paddingTop="20px">
                 <CgAddR color="#E84E0F" />
                 <Flex marginLeft="0px">
                   <Button
@@ -954,8 +989,8 @@ export const TelaCadastroLead = () => {
                     ADICIONAR PEÇA
                   </Button>
                 </Flex>
-              </Flex>
-              <Flex
+            </Flex> */}
+              {/* <Flex
                 w="87vw"
                 h="1px"
                 backgroundColor="#007861"
@@ -963,10 +998,16 @@ export const TelaCadastroLead = () => {
                 top="245px"
                 left="95px"
                 borderRadius="16px"
-              />
-              <Flex marginRight="190px" flexDir="row" paddingTop="20px">
+          /> */}
+              <Flex
+                display="flex"
+                justifyContent="center"
+                marginRight="190px"
+                flexDir="row"
+                paddingTop="15px"
+              >
                 <CgAddR color="#E84E0F" />
-                <Flex marginLeft="0px">
+                <Flex marginLeft="15px">
                   <Button
                     fontWeight="regular"
                     h="16px"
@@ -975,8 +1016,11 @@ export const TelaCadastroLead = () => {
                     position="absolute"
                     color="brand.laranja"
                     backgroundColor="transparent"
+                    onClick={handleAdicionarEqto}
                   >
-                    ADICIONAR EQUIPAMENTO
+                    {openAdicionarEqto
+                      ? 'ADICIONAR NOVO EQUIPAMENTO'
+                      : 'ADICIONAR EQUIPAMENTO'}
                   </Button>
                 </Flex>
               </Flex>
@@ -985,7 +1029,13 @@ export const TelaCadastroLead = () => {
                 h="1px"
                 backgroundColor="#007861"
                 position="absolute"
-                top="150px"
+                top={
+                  openAdicionarEqto && openAdicionarPeca
+                    ? '140px'
+                    : openAdicionarEqto && !openAdicionarPeca
+                      ? '93px'
+                      : '63px'
+                }
                 left="95px"
                 borderRadius="16px"
               />
@@ -1100,7 +1150,7 @@ export const TelaCadastroLead = () => {
                   </Flex>
                 </Flex>
               </Flex>
-              <Flex w="87vw" flexDir="column">
+              <Flex w="87vw" flexDir="column" paddingBottom="150px">
                 <Flex marginTop="5px" paddingLeft="1110px">
                   <Botao.BordaCinza fontSize="16px">
                     GERAR O.S. DE ORÇAMENTO APROVADO

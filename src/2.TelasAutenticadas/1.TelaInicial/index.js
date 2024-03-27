@@ -188,7 +188,9 @@ export const TelaInicial = () => {
                 </Botao.BordaLaranjaMenor>
               )}
               {mostrarBuscarLeadPorNome && (
-                <Botao.BordaLaranjaMenor>
+                <Botao.BordaLaranjaMenor
+                  onClick={() => navigate('/busca-lead')}
+                >
                   BUSCAR LEAD POR NOME
                 </Botao.BordaLaranjaMenor>
               )}

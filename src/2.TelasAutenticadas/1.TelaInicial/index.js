@@ -31,6 +31,36 @@ export const TelaInicial = () => {
     }
   }
 
+  const handleClickReportCliente = () => {
+    if (botoesFixos) {
+      // Se os botões estão fixos, então oculte-os
+      setMostrarBotoes(false)
+      setMostrarAvaliacaoTecnica(false)
+      setMostrarOrçamentos(false)
+      setBotoesFixos(false)
+    } else {
+      // Se os botões não estão fixos, então mostre-os
+      setMostrarBotoes(true)
+      setMostrarAvaliacaoTecnica(true)
+      setMostrarOrçamentos(true)
+      setBotoesFixos(true)
+    }
+  }
+
+  const handleClickReportFechamento = () => {
+    if (botoesFixos) {
+      // Se os botões estão fixos, então oculte-os
+      setMostrarBotoes(false)
+      setMostrarEmitirRecibo(false)
+      setBotoesFixos(false)
+    } else {
+      // Se os botões não estão fixos, então mostre-os
+      setMostrarBotoes(true)
+      setMostrarEmitirRecibo(true)
+      setBotoesFixos(true)
+    }
+  }
+
   const handleMouseEnterReportLead = () => {
     if (!botoesFixos) {
       setMostrarBotoes(true)
@@ -39,11 +69,29 @@ export const TelaInicial = () => {
     }
   }
 
+  const handleMouseEnterReportCliente = () => {
+    if (!botoesFixos) {
+      setMostrarBotoes(true)
+      setMostrarAvaliacaoTecnica(true)
+      setMostrarOrçamentos(true)
+    }
+  }
+
+  const handleMouseEnterReportFechamento = () => {
+    if (!botoesFixos) {
+      setMostrarBotoes(true)
+      setMostrarEmitirRecibo(true)
+    }
+  }
+
   const handleMouseLeave = () => {
     if (!botoesFixos) {
       setMostrarBotoes(false)
       setMostrarCadastrarNovoLead(false)
       setMostrarBuscarLeadPorNome(false)
+      setMostrarAvaliacaoTecnica(false)
+      setMostrarOrçamentos(false)
+      setMostrarEmitirRecibo(false)
     }
   }
 
@@ -108,25 +156,23 @@ export const TelaInicial = () => {
                 REPORT LEAD
               </Botao.BordaLaranja>
             </Flex>
+            <Flex
+              onMouseEnter={handleMouseEnterReportCliente}
+              onMouseLeave={handleMouseLeave}
+            >
+              <Botao.BordaLaranja onClick={handleClickReportCliente}>
+                REPORT CLIENTE
+              </Botao.BordaLaranja>
+            </Flex>
+            <Flex
+              onMouseEnter={handleMouseEnterReportFechamento}
+              onMouseLeave={handleMouseLeave}
+            >
+              <Botao.BordaLaranja onClick={handleClickReportFechamento}>
+                REPORT FECHAMENTO
+              </Botao.BordaLaranja>
+            </Flex>
 
-            <Botao.BordaLaranja
-              onMouseEnter={() => {
-                setMostrarAvaliacaoTecnica(true)
-                setMostrarOrçamentos(true)
-              }}
-              onMouseLeave={() => {
-                setMostrarAvaliacaoTecnica(false)
-                setMostrarOrçamentos(false)
-              }}
-            >
-              REPORT CLIENTE
-            </Botao.BordaLaranja>
-            <Botao.BordaLaranja
-              onMouseEnter={() => setMostrarEmitirRecibo(true)}
-              onMouseLeave={() => setMostrarEmitirRecibo(false)}
-            >
-              REPORT FECHAMENTO
-            </Botao.BordaLaranja>
             <Botao.BordaLaranja>RELATÓRIOS OPERACIONAIS</Botao.BordaLaranja>
             <Botao.BordaLaranja>DASHBOARD</Botao.BordaLaranja>
           </Flex>
@@ -148,19 +194,29 @@ export const TelaInicial = () => {
               )}
             </>
           )}
-          <Flex paddingTop="70px">
-            {mostrarAvaliacaoTecnica && (
-              <Botao.BordaLaranjaMenor>
-                AVALIAÇÃO TÉCNICA
-              </Botao.BordaLaranjaMenor>
+          <Flex flexDir="column" paddingTop="70px">
+            {mostrarBotoes && (
+              <>
+                {mostrarAvaliacaoTecnica && (
+                  <Botao.BordaLaranjaMenor>
+                    AVALIAÇÃO TÉCNICA
+                  </Botao.BordaLaranjaMenor>
+                )}
+                {mostrarOrçamentos && (
+                  <Botao.BordaLaranjaMenor>ORÇAMENTOS</Botao.BordaLaranjaMenor>
+                )}
+              </>
             )}
           </Flex>
-          {mostrarOrçamentos && (
-            <Botao.BordaLaranjaMenor>ORÇAMENTOS</Botao.BordaLaranjaMenor>
-          )}
           <Flex paddingTop="60px">
-            {mostrarEmitirRecibo && (
-              <Botao.BordaLaranjaMenor>EMITIR RECIBO</Botao.BordaLaranjaMenor>
+            {mostrarBotoes && (
+              <>
+                {mostrarEmitirRecibo && (
+                  <Botao.BordaLaranjaMenor>
+                    EMITIR RECIBO
+                  </Botao.BordaLaranjaMenor>
+                )}
+              </>
             )}
           </Flex>
         </Flex>

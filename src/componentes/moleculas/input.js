@@ -6,23 +6,34 @@ import {
   Button
 } from '@chakra-ui/react'
 import { ViewIcon, ViewOffIcon, EmailIcon } from '@chakra-ui/icons'
+import { Textos } from 'componentes/atomos'
 
 export const Input = (props) => (
-  <ChakraInput backgroundColor="brand.cinza" {...props} />
+  <>
+    <ChakraInput backgroundColor="brand.cinza" {...props} />
+    {props.error && <Textos color="red">{props.error}</Textos>}
+  </>
 )
 
 Input.Campo = ({ value, onChange, id, name, ...props }) => (
-  <ChakraInput
-    fontSize="14px"
-    h="36px"
-    borderRadius="16px"
-    bg="brand.branco"
-    value={value}
-    onChange={onChange}
-    id={id}
-    name={name}
-    {...props}
-  />
+  <div style={{ display: 'flex', flexDirection: 'column' }}>
+    <ChakraInput
+      fontSize="14px"
+      h="36px"
+      borderRadius="16px"
+      bg="brand.branco"
+      value={value}
+      onChange={onChange}
+      id={id}
+      name={name}
+      {...props}
+    />
+    {props.error && (
+      <Textos fontWeight="regular" fontSize="10px" color="red">
+        {props.error}
+      </Textos>
+    )}
+  </div>
 )
 
 Input.Senha = (props) => {

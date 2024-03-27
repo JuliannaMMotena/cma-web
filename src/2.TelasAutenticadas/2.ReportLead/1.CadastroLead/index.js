@@ -88,12 +88,8 @@ export const TelaCadastroLead = () => {
       VALORPEÇA: Yup.number(),
       TIPOCONSERTO: Yup.string()
     }),
-    onSubmit: (dados) => {
-      console.log({ dados })
-    }
+    onSubmit: (dados) => {}
   })
-
-  console.log({ values, errors })
 
   return (
     <Flex flexDir="column">
@@ -138,9 +134,9 @@ export const TelaCadastroLead = () => {
           <Flex
             w="87vw"
             h="20px"
-            backgroundColor="#007861"
+            backgroundColor="brand.principal"
             position="absolute"
-            top="200px"
+            top="210px"
             left="95px"
             borderRadius="16px"
           />
@@ -148,7 +144,7 @@ export const TelaCadastroLead = () => {
             flexDir="column"
             w="100vw"
             h="608px"
-            top="200px"
+            top="210px"
             alignItems="center"
             position="absolute"
             fontSize="14px"
@@ -158,69 +154,76 @@ export const TelaCadastroLead = () => {
             </Flex>
             <Flex paddingLeft="100px" flexDir="column">
               <Flex
-                paddingLeft="17px"
+                paddingLeft="0px"
                 alignItems="baseline"
                 w="90vw"
                 flexDir="row"
               >
-                <Flex w="300px">
-                  <Flex w="120px" color="#007861">
+                <Flex w="285px">
+                  <Flex w="120px" color="brand.principal">
                     <label htmlFor="CNPJCPF" style={{ textAlign: 'right' }}>
-                      CNPJ OU CPF:
+                      CNPJ OU <br /> CPF:
                     </label>
                   </Flex>
-                  <Flex color="#E84E0F">
+                  <Flex color="brand.laranja">
                     <label htmlFor="CNPJCPF" style={{ textAlign: 'right' }}>
                       *
                     </label>
                   </Flex>
                   <Input.Campo
-                    focusBorderColor="#EFEDED"
-                    marginLeft="10px"
+                    focusBorderColor="brand.cinza"
+                    marginLeft="0px"
                     id="CNPJCPF"
                     name="CNPJCPF"
                     value={values.CNPJCPF}
                     onChange={handleChange}
+                    type="number"
+                    error={errors.CNPJCPF}
                   />
                 </Flex>
-                <Flex marginLeft="30px" paddingTop="5px" w="750px">
-                  <Flex w="220px" color="#007861">
+                <Flex marginLeft="35px" paddingTop="5px" w="750px">
+                  <Flex w="220px" color="brand.principal">
                     <label htmlFor="NOME" style={{ textAlign: 'right' }}>
-                      NOME COMPLETO OU RAZÃO SOCIAL:
+                      NOME COMPLETO OU <br /> RAZÃO SOCIAL:
                     </label>
                   </Flex>
-                  <Flex marginTop="12px" color="#E84E0F">
+                  <Flex marginTop="12px" color="brand.laranja">
                     <label htmlFor="NOME" style={{ textAlign: 'right' }}>
                       *
                     </label>
                   </Flex>
                   <Input.Campo
-                    focusBorderColor="#EFEDED"
-                    marginLeft="10px"
+                    w="600px"
+                    focusBorderColor="brand.cinza"
+                    marginLeft="0px"
                     id="NOME"
                     name="NOME"
                     value={values.NOME}
                     onChange={handleChange}
+                    type="text"
+                    error={errors.NOME}
                   />
                 </Flex>
-                <Flex paddingRight="80px" paddingLeft="50px" w="350px">
-                  <Flex w="120px" color="#007861">
+                <Flex paddingRight="60px" paddingLeft="50px" w="350px">
+                  <Flex w="120px" color="brand.principal">
                     <label htmlFor="DATACONTATO" style={{ textAlign: 'right' }}>
                       DATA DO CONTATO:
                     </label>
                   </Flex>
-                  <Flex marginTop="12px" color="#E84E0F">
+                  <Flex marginTop="12px" color="brand.laranja">
                     <label htmlFor="DATACONTATO" style={{ textAlign: 'right' }}>
                       *
                     </label>
                   </Flex>
                   <Input.Campo
-                    focusBorderColor="#EFEDED"
+                    focusBorderColor="brand.cinza"
                     marginLeft="10px"
                     id="DATACONTATO"
                     name="DATACONTATO"
                     value={values.DATACONTATO}
                     onChange={handleChange}
+                    type="date"
+                    error={errors.DATACONTATO}
                   />
                 </Flex>
               </Flex>
@@ -232,63 +235,70 @@ export const TelaCadastroLead = () => {
                 flexDir="row"
               >
                 <Flex paddingLeft="17px">
-                  <Flex color="#007861">
+                  <Flex color="brand.principal">
                     <label htmlFor="ENDEREÇO" style={{ textAlign: 'right' }}>
                       ENDEREÇO <br /> COBRANÇA:
                     </label>
                   </Flex>
-                  <Flex color="#E84E0F">
+                  <Flex color="brand.laranja">
                     <label htmlFor="ENDEREÇO" style={{ textAlign: 'right' }}>
                       *
                     </label>
                   </Flex>
                   <Input.Campo
-                    focusBorderColor="#EFEDED"
+                    focusBorderColor="brand.cinza"
                     w="630px"
                     marginLeft="10px"
                     id="ENDEREÇO"
                     name="ENDEREÇO"
                     value={values.ENDEREÇO}
                     onChange={handleChange}
+                    type="text"
+                    error={errors.ENDEREÇO}
                   />
                 </Flex>
                 <Flex>
-                  <Flex paddingLeft="50px" w="100px" color="#007861">
+                  <Flex paddingLeft="50px" w="100px" color="brand.principal">
                     <label htmlFor="NUMERO" style={{ textAlign: 'right' }}>
                       NÚMERO:
                     </label>
                   </Flex>
-                  <Flex marginLeft="10px" color="#E84E0F">
+                  <Flex marginLeft="10px" color="brand.laranja">
                     <label htmlFor="NUMERO" style={{ textAlign: 'right' }}>
                       *
                     </label>
                   </Flex>
                   <Input.Campo
-                    focusBorderColor="#EFEDED"
+                    focusBorderColor="brand.cinza"
                     w="120px"
                     marginLeft="10px"
                     id="NUMERO"
                     name="NUMERO"
                     value={values.NUMERO}
                     onChange={handleChange}
+                    type="number"
+                    error={errors.NUMERO}
                   />
                 </Flex>
                 <Flex paddingLeft="50px">
-                  <Flex w="120px" color="#007861">
+                  <Flex w="120px" color="brand.principal">
                     <label htmlFor="COMPLEMENTO" style={{ textAlign: 'right' }}>
                       COMPLEMENTO:
                     </label>
                   </Flex>
 
                   <Input.Campo
-                    focusBorderColor="#EFEDED"
-                    w="220px"
+                    focusBorderColor="brand.cinza"
+                    w="225px"
                     marginLeft="20px"
                     right="25px"
                     id="COMPLEMENTO"
                     name="COMPLEMENTO"
                     value={values.COMPLEMENTO}
                     onChange={handleChange}
+                    type="text"
+                    placeholder="BLOCO/CASA/ANDAR"
+                    error={errors.COMPLEMENTO}
                   />
                 </Flex>
               </Flex>
@@ -299,77 +309,86 @@ export const TelaCadastroLead = () => {
                 flexDir="row"
               >
                 <Flex paddingLeft="65px">
-                  <Flex color="#007861">
+                  <Flex color="brand.principal">
                     <label htmlFor="CEP" style={{ textAlign: 'right' }}>
                       CEP:
                     </label>
                   </Flex>
                   <Input.Campo
-                    focusBorderColor="#EFEDED"
+                    focusBorderColor="brand.cinza"
                     w="130px"
                     marginLeft="15px"
                     id="CEP"
                     name="CEP"
                     value={values.CEP}
                     onChange={handleChange}
+                    type="number"
+                    placeholder="00.000-000"
+                    error={errors.CEP}
                   />
                 </Flex>
                 <Flex marginLeft="45px">
-                  <Flex color="#007861">
+                  <Flex color="brand.principal">
                     <label htmlFor="BAIRRO" style={{ textAlign: 'right' }}>
                       BAIRRO:
                     </label>
                   </Flex>
                   <Input.Campo
-                    focusBorderColor="#EFEDED"
+                    focusBorderColor="brand.cinza"
                     w="360px"
                     marginLeft="10px"
                     id="BAIRRO"
                     name="BAIRRO"
                     value={values.BAIRRO}
                     onChange={handleChange}
+                    type="text"
+                    error={errors.BAIRRO}
                   />
                 </Flex>
                 <Flex marginLeft="45px">
-                  <Flex color="#007861">
+                  <Flex color="brand.principal">
                     <label htmlFor="CIDADE" style={{ textAlign: 'right' }}>
                       CIDADE:
                     </label>
                   </Flex>
-                  <Flex color="#E84E0F">
+                  <Flex color="brand.laranja">
                     <label htmlFor="CIDADE" style={{ textAlign: 'right' }}>
                       *
                     </label>
                   </Flex>
                   <Input.Campo
-                    focusBorderColor="#EFEDED"
+                    focusBorderColor="brand.cinza"
                     w="360px"
                     marginLeft="10px"
                     id="CIDADE"
                     name="CIDADE"
                     value={values.CIDADE}
                     onChange={handleChange}
+                    type="text"
+                    error={errors.CIDADE}
                   />
                 </Flex>
                 <Flex marginLeft="45px">
-                  <Flex color="#007861">
+                  <Flex color="brand.principal">
                     <label htmlFor="ESTADO" style={{ textAlign: 'right' }}>
                       ESTADO:
                     </label>
                   </Flex>
-                  <Flex color="#E84E0F">
+                  <Flex color="brand.laranja">
                     <label htmlFor="ESTADO" style={{ textAlign: 'right' }}>
                       *
                     </label>
                   </Flex>
                   <Input.Campo
-                    focusBorderColor="#EFEDED"
+                    focusBorderColor="brand.cinza"
                     w="80px"
                     marginLeft="10px"
                     id="ESTADO"
                     name="ESTADO"
                     value={values.ESTADO}
                     onChange={handleChange}
+                    type="text"
+                    error={errors.ESTADO}
                   />
                 </Flex>
               </Flex>
@@ -380,61 +399,69 @@ export const TelaCadastroLead = () => {
                 flexDir="row"
               >
                 <Flex paddingLeft="30px">
-                  <Flex color="#007861">
+                  <Flex color="brand.principal">
                     <label htmlFor="TELEFONE" style={{ textAlign: 'right' }}>
                       TELEFONE:
                     </label>
                   </Flex>
                   <Input.Campo
-                    focusBorderColor="#EFEDED"
+                    focusBorderColor="brand.cinza"
                     w="200px"
                     marginLeft="10px"
                     id="TELEFONE"
                     name="TELEFONE"
                     value={values.TELEFONE}
                     onChange={handleChange}
+                    type="number"
+                    placeholder="(DDD) 9999-9999"
+                    error={errors.TELEFONE}
                   />
                 </Flex>
                 <Flex marginLeft="45px">
-                  <Flex color="#007861">
+                  <Flex color="brand.principal">
                     <label htmlFor="CELULAR" style={{ textAlign: 'right' }}>
                       CELULAR:
                     </label>
                   </Flex>
-                  <Flex color="#E84E0F">
+                  <Flex color="brand.laranja">
                     <label htmlFor="CELULAR" style={{ textAlign: 'right' }}>
                       *
                     </label>
                   </Flex>
                   <Input.Campo
-                    focusBorderColor="#EFEDED"
+                    focusBorderColor="brand.cinza"
                     w="200px"
                     marginLeft="10px"
                     id="CELULAR"
                     name="CELULAR"
                     value={values.CELULAR}
                     onChange={handleChange}
+                    type="number"
+                    placeholder="(DDD) 99999-9999"
+                    error={errors.CELULAR}
                   />
                 </Flex>
                 <Flex marginLeft="45px">
-                  <Flex w="50px" color="#007861">
+                  <Flex w="50px" color="brand.principal">
                     <label htmlFor="EMAIL" style={{ textAlign: 'right' }}>
                       E-MAIL:
                     </label>
                   </Flex>
-                  <Flex color="#E84E0F">
+                  <Flex color="brand.laranja">
                     <label htmlFor="EMAIL" style={{ textAlign: 'right' }}>
                       *
                     </label>
                   </Flex>
                   <Input.Campo
-                    focusBorderColor="#EFEDED"
+                    focusBorderColor="brand.cinza"
                     w="630px"
                     marginLeft="10px"
                     id="EMAIL"
                     name="EMAIL"
                     value={values.EMAIL}
                     onChange={handleChange}
+                    type="text"
+                    error={errors.EMAIL}
                   />
                 </Flex>
               </Flex>
@@ -449,7 +476,7 @@ export const TelaCadastroLead = () => {
                   <input type="checkbox" />
                 </Flex>
                 <Flex paddingLeft="5px">
-                  <Textos.Subtitulo2 color="#007861">
+                  <Textos.Subtitulo2 color="brand.principal">
                     MESMO ENDEREÇO DE ENTREGA
                   </Textos.Subtitulo2>
                 </Flex>
@@ -457,7 +484,7 @@ export const TelaCadastroLead = () => {
                   <input onChange={handleEndereco} type="checkbox" />
                 </Flex>
                 <Flex paddingLeft="5px">
-                  <Textos.Subtitulo2 color="#007861">
+                  <Textos.Subtitulo2 color="brand.principal">
                     CADASTRAR ENDEREÇO DE ENTREGA
                   </Textos.Subtitulo2>
                 </Flex>
@@ -469,7 +496,7 @@ export const TelaCadastroLead = () => {
                     h="1px"
                     backgroundColor="brand.principal"
                     position="absolute"
-                    top="240px"
+                    top="242px"
                     left="95px"
                     borderRadius="16px"
                   />
@@ -489,7 +516,7 @@ export const TelaCadastroLead = () => {
                           ENDEREÇO <br /> COBRANÇA:
                         </label>
                       </Flex>
-                      <Flex color="#E84E0F">
+                      <Flex color="brand.laranja">
                         <label
                           htmlFor="ENDEREÇO"
                           style={{ textAlign: 'right' }}
@@ -498,38 +525,46 @@ export const TelaCadastroLead = () => {
                         </label>
                       </Flex>
                       <Input.Campo
-                        focusBorderColor="#EFEDED"
+                        focusBorderColor="brand.cinza"
                         w="630px"
                         marginLeft="10px"
                         id="ENDEREÇO"
                         name="ENDEREÇO"
                         value={values.ENDEREÇO}
                         onChange={handleChange}
+                        type="text"
+                        error={errors.ENDEREÇO}
                       />
                     </Flex>
                     <Flex>
-                      <Flex paddingLeft="50px" w="100px" color="#007861">
+                      <Flex
+                        paddingLeft="50px"
+                        w="100px"
+                        color="brand.principal"
+                      >
                         <label htmlFor="NUMERO" style={{ textAlign: 'right' }}>
                           NÚMERO:
                         </label>
                       </Flex>
-                      <Flex marginLeft="10px" color="#E84E0F">
+                      <Flex marginLeft="10px" color="brand.laranja">
                         <label htmlFor="NUMERO" style={{ textAlign: 'right' }}>
                           *
                         </label>
                       </Flex>
                       <Input.Campo
-                        focusBorderColor="#EFEDED"
+                        focusBorderColor="brand.cinza"
                         w="120px"
                         marginLeft="10px"
                         id="NUMERO"
                         name="NUMERO"
                         value={values.NUMERO}
                         onChange={handleChange}
+                        type="number"
+                        error={errors.NUMERO}
                       />
                     </Flex>
                     <Flex paddingLeft="50px">
-                      <Flex w="120px" color="#007861">
+                      <Flex w="120px" color="brand.principal">
                         <label
                           htmlFor="COMPLEMENTO"
                           style={{ textAlign: 'right' }}
@@ -539,7 +574,7 @@ export const TelaCadastroLead = () => {
                       </Flex>
 
                       <Input.Campo
-                        focusBorderColor="#EFEDED"
+                        focusBorderColor="brand.cinza"
                         w="220px"
                         marginLeft="20px"
                         right="25px"
@@ -547,6 +582,8 @@ export const TelaCadastroLead = () => {
                         name="COMPLEMENTO"
                         value={values.COMPLEMENTO}
                         onChange={handleChange}
+                        type="text"
+                        error={errors.COMPLEMENTO}
                       />
                     </Flex>
                   </Flex>
@@ -557,77 +594,85 @@ export const TelaCadastroLead = () => {
                     flexDir="row"
                   >
                     <Flex paddingLeft="65px">
-                      <Flex color="#007861">
+                      <Flex color="brand.principal">
                         <label htmlFor="CEP" style={{ textAlign: 'right' }}>
                           CEP:
                         </label>
                       </Flex>
                       <Input.Campo
-                        focusBorderColor="#EFEDED"
+                        focusBorderColor="brand.cinza"
                         w="130px"
                         marginLeft="15px"
                         id="CEP"
                         name="CEP"
                         value={values.CEP}
                         onChange={handleChange}
+                        type="number"
+                        error={errors.CEP}
                       />
                     </Flex>
                     <Flex marginLeft="45px">
-                      <Flex color="#007861">
+                      <Flex color="brand.principal">
                         <label htmlFor="BAIRRO" style={{ textAlign: 'right' }}>
                           BAIRRO:
                         </label>
                       </Flex>
                       <Input.Campo
-                        focusBorderColor="#EFEDED"
+                        focusBorderColor="brand.cinza"
                         w="360px"
                         marginLeft="10px"
                         id="BAIRRO"
                         name="BAIRRO"
                         value={values.BAIRRO}
                         onChange={handleChange}
+                        type="text"
+                        error={errors.BAIRRO}
                       />
                     </Flex>
                     <Flex marginLeft="45px">
-                      <Flex color="#007861">
+                      <Flex color="brand.principal">
                         <label htmlFor="CIDADE" style={{ textAlign: 'right' }}>
                           CIDADE:
                         </label>
                       </Flex>
-                      <Flex color="#E84E0F">
+                      <Flex color="brand.laranja">
                         <label htmlFor="CIDADE" style={{ textAlign: 'right' }}>
                           *
                         </label>
                       </Flex>
                       <Input.Campo
-                        focusBorderColor="#EFEDED"
+                        focusBorderColor="brand.cinza"
                         w="360px"
                         marginLeft="10px"
                         id="CIDADE"
                         name="CIDADE"
                         value={values.CIDADE}
                         onChange={handleChange}
+                        type="text"
+                        error={errors.CIDADE}
                       />
                     </Flex>
                     <Flex marginLeft="45px">
-                      <Flex color="#007861">
+                      <Flex color="brand.principal">
                         <label htmlFor="ESTADO" style={{ textAlign: 'right' }}>
                           ESTADO:
                         </label>
                       </Flex>
-                      <Flex color="#E84E0F">
+                      <Flex color="brand.laranja">
                         <label htmlFor="ESTADO" style={{ textAlign: 'right' }}>
                           *
                         </label>
                       </Flex>
                       <Input.Campo
-                        focusBorderColor="#EFEDED"
+                        focusBorderColor="brand.cinza"
                         w="80px"
                         marginLeft="10px"
                         id="ESTADO"
                         name="ESTADO"
                         value={values.ESTADO}
                         onChange={handleChange}
+                        type="text"
+                        error={errors.ESTADO}
                       />
                     </Flex>
                   </Flex>
@@ -639,9 +684,9 @@ export const TelaCadastroLead = () => {
             <Flex
               w="87vw"
               h="20px"
-              backgroundColor="#007861"
+              backgroundColor="brand.principal"
               position="absolute"
-              top={openEndereco ? '560px' : '440'}
+              top={openEndereco ? '560px' : '470'}
               left="95px"
               borderRadius="16px"
             />
@@ -650,7 +695,7 @@ export const TelaCadastroLead = () => {
               flexDir="column"
               w="100vw"
               h="0px"
-              top={openEndereco ? '560px' : '440'}
+              top={openEndereco ? '560px' : '470'}
               alignItems="center"
               position="absolute"
               fontSize="14px"
@@ -669,7 +714,7 @@ export const TelaCadastroLead = () => {
                     flexDir="row"
                   >
                     <Flex>
-                      <Flex paddingLeft="55px" color="#007861">
+                      <Flex paddingLeft="55px" color="brand.principal">
                         <label
                           htmlFor="TIPODEEQUIPAMENTO"
                           style={{ textAlign: 'right' }}
@@ -677,7 +722,7 @@ export const TelaCadastroLead = () => {
                           TIPO DE <br /> EQUIPAMENTO:
                         </label>
                       </Flex>
-                      <Flex color="#E84E0F">
+                      <Flex color="brand.laranja">
                         <label
                           htmlFor="TIPODEEQUIPAMENTO"
                           style={{ textAlign: 'right' }}
@@ -686,76 +731,84 @@ export const TelaCadastroLead = () => {
                         </label>
                       </Flex>
                       <Input.Campo
-                        focusBorderColor="#EFEDED"
+                        focusBorderColor="brand.cinza"
                         w="235px"
                         marginLeft="5px"
                         id="TIPODEEQUIPAMENTO"
                         name="TIPODEEQUIPAMENTO"
                         value={values.TIPODEEQUIPAMENTO}
                         onChange={handleChange}
+                        type="text"
+                        error={errors.TIPODEEQUIPAMENTO}
                       />
                     </Flex>
                     <Flex marginLeft="40px">
-                      <Flex color="#007861">
+                      <Flex color="brand.principal">
                         <label htmlFor="DEFEITO" style={{ textAlign: 'right' }}>
                           DEFEITO:
                         </label>
                       </Flex>
-                      <Flex color="#E84E0F">
+                      <Flex color="brand.laranja">
                         <label htmlFor="DEFEITO" style={{ textAlign: 'right' }}>
                           *
                         </label>
                       </Flex>
                       <Input.Campo
-                        focusBorderColor="#EFEDED"
+                        focusBorderColor="brand.cinza"
                         w="235px"
                         marginLeft="5px"
                         id="DEFEITO"
                         name="DEFEITO"
                         value={values.DEFEITO}
                         onChange={handleChange}
+                        type="text"
+                        error={errors.DEFEITO}
                       />
                     </Flex>
                     <Flex marginLeft="40px">
-                      <Flex color="#007861">
+                      <Flex color="brand.principal">
                         <label htmlFor="MARCA" style={{ textAlign: 'right' }}>
                           MARCA:
                         </label>
                       </Flex>
-                      <Flex color="#E84E0F">
+                      <Flex color="brand.laranja">
                         <label htmlFor="MARCA" style={{ textAlign: 'right' }}>
                           *
                         </label>
                       </Flex>
                       <Input.Campo
-                        focusBorderColor="#EFEDED"
+                        focusBorderColor="brand.cinza"
                         w="235px"
                         marginLeft="5px"
                         id="MARCA"
                         name="MARCA"
                         value={values.MARCA}
                         onChange={handleChange}
+                        type="text"
+                        error={errors.MARCA}
                       />
                     </Flex>
                     <Flex marginLeft="40px">
-                      <Flex color="#007861">
+                      <Flex color="brand.principal">
                         <label htmlFor="MODELO" style={{ textAlign: 'right' }}>
                           MODELO:
                         </label>
                       </Flex>
-                      <Flex color="#E84E0F">
+                      <Flex color="brand.laranja">
                         <label htmlFor="MODELO" style={{ textAlign: 'right' }}>
                           *
                         </label>
                       </Flex>
                       <Input.Campo
-                        focusBorderColor="#EFEDED"
+                        focusBorderColor="brand.cinza"
                         w="235px"
                         marginLeft="5px"
                         id="MODELO"
                         name="MODELO"
                         value={values.MODELO}
                         onChange={handleChange}
+                        type="text"
+                        error={errors.MODELO}
                       />
                     </Flex>
                   </Flex>
@@ -770,7 +823,7 @@ export const TelaCadastroLead = () => {
                         paddingTop="5px"
                       >
                         <Flex paddingLeft="110px">
-                          <Flex paddingLeft="55px" color="#007861">
+                          <Flex paddingLeft="55px" color="brand.principal">
                             <label
                               htmlFor="PEÇA"
                               style={{ textAlign: 'right' }}
@@ -779,17 +832,19 @@ export const TelaCadastroLead = () => {
                             </label>
                           </Flex>
                           <Input.Campo
-                            focusBorderColor="#EFEDED"
+                            focusBorderColor="brand.cinza"
                             w="235px"
                             marginLeft="5px"
                             id="PEÇA"
                             name="PEÇA"
                             value={values.PEÇA}
                             onChange={handleChange}
+                            type="text"
+                            error={errors.PEÇA}
                           />
                         </Flex>
                         <Flex marginLeft="40px">
-                          <Flex color="#007861">
+                          <Flex color="brand.principal">
                             <label
                               htmlFor="QUANTIDADE"
                               style={{ textAlign: 'right' }}
@@ -798,17 +853,19 @@ export const TelaCadastroLead = () => {
                             </label>
                           </Flex>
                           <Input.Campo
-                            focusBorderColor="#EFEDED"
+                            focusBorderColor="brand.cinza"
                             w="75px"
                             marginLeft="5px"
                             id="QUANTIDADE"
                             name="QUANTIDADE"
                             value={values.QUANTIDADE}
                             onChange={handleChange}
+                            type="number"
+                            error={errors.QUANTIDADE}
                           />
                         </Flex>
                         <Flex marginLeft="40px">
-                          <Flex color="#007861">
+                          <Flex color="brand.principal">
                             <label
                               htmlFor="VALORPEÇA"
                               style={{ textAlign: 'right' }}
@@ -818,17 +875,19 @@ export const TelaCadastroLead = () => {
                           </Flex>
 
                           <Input.Campo
-                            focusBorderColor="#EFEDED"
+                            focusBorderColor="brand.cinza"
                             w="135px"
                             marginLeft="5px"
                             id="VALORPEÇA"
                             name="VALORPEÇA"
                             value={values.VALORPEÇA}
                             onChange={handleChange}
+                            type="text"
+                            error={errors.VALORPEÇA}
                           />
                         </Flex>
                         <Flex marginLeft="40px">
-                          <Flex color="#007861">
+                          <Flex color="brand.principal">
                             <label
                               htmlFor="TIPOCONSERTO"
                               style={{ textAlign: 'right' }}
@@ -837,13 +896,15 @@ export const TelaCadastroLead = () => {
                             </label>
                           </Flex>
                           <Input.Campo
-                            focusBorderColor="#EFEDED"
+                            focusBorderColor="brand.cinza"
                             w="235px"
                             marginLeft="5px"
                             id="TIPOCONSERTO"
                             name="TIPOCONSERTO"
                             value={values.TIPOCONSERTO}
                             onChange={handleChange}
+                            type="text"
+                            error={errors.TIPOCONSERTO}
                           />
                         </Flex>
                       </Flex>
@@ -856,7 +917,7 @@ export const TelaCadastroLead = () => {
                     flexDir="row"
                     paddingTop={openAdicionarPeca ? '10px' : '5px'}
                   >
-                    <CgAddR color="#E84E0F" />
+                    <CgAddR color="brand.laranja" />
                     <Flex marginLeft="15px">
                       <Button
                         fontWeight="regular"
@@ -874,131 +935,6 @@ export const TelaCadastroLead = () => {
                   </Flex>
                 </Flex>
               )}
-
-              {/* <Flex
-                paddingTop="15px"
-                marginRight="0px"
-                display="flex"
-                alignItems="baseline"
-                w="90vw"
-                flexDir="row"
-              >
-                <Flex>
-                  <Flex paddingLeft="55px" color="#007861">
-                    <label
-                      htmlFor="TIPODEEQUIPAMENTO"
-                      style={{ textAlign: 'right' }}
-                    >
-                      TIPO DE <br /> EQUIPAMENTO:
-                    </label>
-                  </Flex>
-                  <Flex color="#E84E0F">
-                    <label
-                      htmlFor="TIPODEEQUIPAMENTO"
-                      style={{ textAlign: 'right' }}
-                    >
-                      *
-                    </label>
-                  </Flex>
-                  <Input.Campo
-                    focusBorderColor="#EFEDED"
-                    w="235px"
-                    marginLeft="5px"
-                    id="TIPODEEQUIPAMENTO"
-                    name="TIPODEEQUIPAMENTO"
-                    value={values.TIPODEEQUIPAMENTO}
-                    onChange={handleChange}
-                  />
-                </Flex>
-                <Flex marginLeft="40px">
-                  <Flex color="#007861">
-                    <label htmlFor="DEFEITO" style={{ textAlign: 'right' }}>
-                      DEFEITO:
-                    </label>
-                  </Flex>
-                  <Flex color="#E84E0F">
-                    <label htmlFor="DEFEITO" style={{ textAlign: 'right' }}>
-                      *
-                    </label>
-                  </Flex>
-                  <Input.Campo
-                    focusBorderColor="#EFEDED"
-                    w="235px"
-                    marginLeft="5px"
-                    id="DEFEITO"
-                    name="DEFEITO"
-                    value={values.DEFEITO}
-                    onChange={handleChange}
-                  />
-                </Flex>
-                <Flex marginLeft="40px">
-                  <Flex color="#007861">
-                    <label htmlFor="MARCA" style={{ textAlign: 'right' }}>
-                      MARCA:
-                    </label>
-                  </Flex>
-                  <Flex color="#E84E0F">
-                    <label htmlFor="MARCA" style={{ textAlign: 'right' }}>
-                      *
-                    </label>
-                  </Flex>
-                  <Input.Campo
-                    focusBorderColor="#EFEDED"
-                    w="235px"
-                    marginLeft="5px"
-                    id="MARCA"
-                    name="MARCA"
-                    value={values.MARCA}
-                    onChange={handleChange}
-                  />
-                </Flex>
-                <Flex marginLeft="40px">
-                  <Flex color="#007861">
-                    <label htmlFor="MODELO" style={{ textAlign: 'right' }}>
-                      MODELO:
-                    </label>
-                  </Flex>
-                  <Flex color="#E84E0F">
-                    <label htmlFor="MODELO" style={{ textAlign: 'right' }}>
-                      *
-                    </label>
-                  </Flex>
-                  <Input.Campo
-                    focusBorderColor="#EFEDED"
-                    w="235px"
-                    marginLeft="5px"
-                    id="MODELO"
-                    name="MODELO"
-                    value={values.MODELO}
-                    onChange={handleChange}
-                  />
-                </Flex>
-              </Flex> */}
-              {/* <Flex marginRight="190px" flexDir="row" paddingTop="20px">
-                <CgAddR color="#E84E0F" />
-                <Flex marginLeft="0px">
-                  <Button
-                    fontWeight="regular"
-                    h="16px"
-                    w="196px"
-                    fontSize="14px"
-                    position="absolute"
-                    color="brand.laranja"
-                    backgroundColor="transparent"
-                  >
-                    ADICIONAR PEÇA
-                  </Button>
-                </Flex>
-            </Flex> */}
-              {/* <Flex
-                w="87vw"
-                h="1px"
-                backgroundColor="#007861"
-                position="absolute"
-                top="245px"
-                left="95px"
-                borderRadius="16px"
-          /> */}
               <Flex
                 display="flex"
                 justifyContent="center"
@@ -1006,7 +942,7 @@ export const TelaCadastroLead = () => {
                 flexDir="row"
                 paddingTop="15px"
               >
-                <CgAddR color="#E84E0F" />
+                <CgAddR color="brand.laranja" />
                 <Flex marginLeft="15px">
                   <Button
                     fontWeight="regular"
@@ -1027,7 +963,7 @@ export const TelaCadastroLead = () => {
               <Flex
                 w="87vw"
                 h="1px"
-                backgroundColor="#007861"
+                backgroundColor="brand.principal"
                 position="absolute"
                 top={
                   openAdicionarEqto && openAdicionarPeca
@@ -1048,7 +984,7 @@ export const TelaCadastroLead = () => {
                   flexDir="row"
                 >
                   <Flex>
-                    <Flex paddingLeft="55px" color="#007861">
+                    <Flex paddingLeft="55px" color="brand.principal">
                       <label
                         htmlFor="VALORMAODEOBRA"
                         style={{ textAlign: 'right' }}
@@ -1056,7 +992,7 @@ export const TelaCadastroLead = () => {
                         VALOR MÃO- <br /> -DE-OBRA*:
                       </label>
                     </Flex>
-                    <Flex color="#E84E0F">
+                    <Flex color="brand.laranja">
                       <label
                         htmlFor="VALORMAODEOBRA"
                         style={{ textAlign: 'right' }}
@@ -1065,7 +1001,7 @@ export const TelaCadastroLead = () => {
                       </label>
                     </Flex>
                     <Input.Campo
-                      focusBorderColor="#EFEDED"
+                      focusBorderColor="brand.cinza"
                       fontWeight="extrabold"
                       w="135px"
                       marginLeft="5px"
@@ -1073,10 +1009,12 @@ export const TelaCadastroLead = () => {
                       name="VALORMAODEOBRA"
                       value={values.VALORMAODEOBRA}
                       onChange={handleChange}
+                      type="text"
+                      error={errors.VALORMAODEOBRA}
                     />
                   </Flex>
                   <Flex marginLeft="40px">
-                    <Flex color="#007861">
+                    <Flex color="brand.principal">
                       <label
                         htmlFor="DATAVISITA:"
                         style={{ textAlign: 'right' }}
@@ -1085,7 +1023,7 @@ export const TelaCadastroLead = () => {
                       </label>
                     </Flex>
                     <Input.Campo
-                      focusBorderColor="#EFEDED"
+                      focusBorderColor="brand.cinza"
                       fontWeight="extrabold"
                       w="135px"
                       marginLeft="5px"
@@ -1093,10 +1031,12 @@ export const TelaCadastroLead = () => {
                       name="DATAVISITA"
                       value={values.DATAVISITA}
                       onChange={handleChange}
+                      type="date"
+                      error={errors.DATAVISITA}
                     />
                   </Flex>
                   <Flex marginLeft="40px">
-                    <Flex fontWeight="extrabold" color="#007861">
+                    <Flex fontWeight="extrabold" color="brand.principal">
                       <label
                         htmlFor="VALORTOTAL:"
                         style={{ textAlign: 'right' }}
@@ -1104,7 +1044,7 @@ export const TelaCadastroLead = () => {
                         VALOR TOTAL DO <br /> ORÇAMENTO::
                       </label>
                     </Flex>
-                    <Flex color="#E84E0F">
+                    <Flex color="brand.laranja">
                       <label
                         htmlFor="VALORTOTAL"
                         style={{ textAlign: 'right' }}
@@ -1113,11 +1053,11 @@ export const TelaCadastroLead = () => {
                       </label>
                     </Flex>
                     <Input.Campo
-                      focusBorderColor="#007861"
+                      focusBorderColor="brand.principal"
                       fontWeight="extrabold"
                       color="brand.laranja"
                       borderStyle="solid"
-                      borderColor="#007861"
+                      borderColor="brand.principal"
                       borderWidth="2px"
                       w="135px"
                       marginLeft="5px"
@@ -1125,6 +1065,8 @@ export const TelaCadastroLead = () => {
                       name="VALORTOTAL"
                       value={values.VALORTOTAL}
                       onChange={handleChange}
+                      type="text"
+                      error={errors.VALORTOTAL}
                     />
                   </Flex>
                   <Flex

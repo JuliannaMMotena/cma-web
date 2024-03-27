@@ -1,9 +1,52 @@
 import { Flex, Image } from '@chakra-ui/react'
 import { Textos, Botao } from 'componentes'
 import { useNavigate } from 'react-router-dom'
+import { useState } from 'react'
 
 export const TelaInicial = () => {
   const navigate = useNavigate()
+  const [mostrarCadastrarNovoLead, setMostrarCadastrarNovoLead] =
+    useState(false)
+  const [mostrarBuscarLeadPorNome, setMostrarBuscarLeadPorNome] =
+    useState(false)
+  const [mostrarAvaliacaoTecnica, setMostrarAvaliacaoTecnica] = useState(false)
+  const [mostrarOrçamentos, setMostrarOrçamentos] = useState(false)
+  const [mostrarEmitirRecibo, setMostrarEmitirRecibo] = useState(false)
+  const [mostrarBotoes, setMostrarBotoes] = useState(false)
+  const [botoesFixos, setBotoesFixos] = useState(false)
+
+  const handleClickReportLead = () => {
+    if (botoesFixos) {
+      // Se os botões estão fixos, então oculte-os
+      setMostrarBotoes(false)
+      setMostrarCadastrarNovoLead(false)
+      setMostrarBuscarLeadPorNome(false)
+      setBotoesFixos(false)
+    } else {
+      // Se os botões não estão fixos, então mostre-os
+      setMostrarBotoes(true)
+      setMostrarCadastrarNovoLead(true)
+      setMostrarBuscarLeadPorNome(true)
+      setBotoesFixos(true)
+    }
+  }
+
+  const handleMouseEnterReportLead = () => {
+    if (!botoesFixos) {
+      setMostrarBotoes(true)
+      setMostrarCadastrarNovoLead(true)
+      setMostrarBuscarLeadPorNome(true)
+    }
+  }
+
+  const handleMouseLeave = () => {
+    if (!botoesFixos) {
+      setMostrarBotoes(false)
+      setMostrarCadastrarNovoLead(false)
+      setMostrarBuscarLeadPorNome(false)
+    }
+  }
+
   return (
     <Flex
       flexDir="row"
@@ -57,26 +100,68 @@ export const TelaInicial = () => {
             Bem-vinda, Yasmin!
           </Textos>
           <Flex paddingLeft="130px" flexDir="column">
-            <Botao.BordaLaranja>REPORT LEAD</Botao.BordaLaranja>
-            <Botao.BordaLaranja>REPORT CLIENTE</Botao.BordaLaranja>
-            <Botao.BordaLaranja>REPORT FECHAMENTO</Botao.BordaLaranja>
+            <Flex
+              onMouseEnter={handleMouseEnterReportLead}
+              onMouseLeave={handleMouseLeave}
+            >
+              <Botao.BordaLaranja onClick={handleClickReportLead}>
+                REPORT LEAD
+              </Botao.BordaLaranja>
+            </Flex>
+
+            <Botao.BordaLaranja
+              onMouseEnter={() => {
+                setMostrarAvaliacaoTecnica(true)
+                setMostrarOrçamentos(true)
+              }}
+              onMouseLeave={() => {
+                setMostrarAvaliacaoTecnica(false)
+                setMostrarOrçamentos(false)
+              }}
+            >
+              REPORT CLIENTE
+            </Botao.BordaLaranja>
+            <Botao.BordaLaranja
+              onMouseEnter={() => setMostrarEmitirRecibo(true)}
+              onMouseLeave={() => setMostrarEmitirRecibo(false)}
+            >
+              REPORT FECHAMENTO
+            </Botao.BordaLaranja>
             <Botao.BordaLaranja>RELATÓRIOS OPERACIONAIS</Botao.BordaLaranja>
             <Botao.BordaLaranja>DASHBOARD</Botao.BordaLaranja>
           </Flex>
         </Flex>
         <Flex flexDir="column" paddingLeft="20px" h="250px">
-          <Botao.BordaLaranjaMenor onClick={() => navigate('/cadastro-lead')}>
-            CADASTRAR NOVO LEAD
-          </Botao.BordaLaranjaMenor>
-          <Botao.BordaLaranjaMenor>
-            BUSCAR LEAD POR NOME
-          </Botao.BordaLaranjaMenor>
-          <Flex paddingTop="7px">
-            <Botao.BordaLaranjaMenor>AVALIAÇÃO TÉCNICA</Botao.BordaLaranjaMenor>
+          {mostrarBotoes && (
+            <>
+              {mostrarCadastrarNovoLead && (
+                <Botao.BordaLaranjaMenor
+                  onClick={() => navigate('/cadastro-lead')}
+                >
+                  CADASTRAR NOVO LEAD
+                </Botao.BordaLaranjaMenor>
+              )}
+              {mostrarBuscarLeadPorNome && (
+                <Botao.BordaLaranjaMenor>
+                  BUSCAR LEAD POR NOME
+                </Botao.BordaLaranjaMenor>
+              )}
+            </>
+          )}
+          <Flex paddingTop="70px">
+            {mostrarAvaliacaoTecnica && (
+              <Botao.BordaLaranjaMenor>
+                AVALIAÇÃO TÉCNICA
+              </Botao.BordaLaranjaMenor>
+            )}
           </Flex>
-          <Botao.BordaLaranjaMenor>ORÇAMENTOS</Botao.BordaLaranjaMenor>
-          <Flex paddingTop="7px">
-            <Botao.BordaLaranjaMenor>EMITIR RECIBO</Botao.BordaLaranjaMenor>
+          {mostrarOrçamentos && (
+            <Botao.BordaLaranjaMenor>ORÇAMENTOS</Botao.BordaLaranjaMenor>
+          )}
+          <Flex paddingTop="60px">
+            {mostrarEmitirRecibo && (
+              <Botao.BordaLaranjaMenor>EMITIR RECIBO</Botao.BordaLaranjaMenor>
+            )}
           </Flex>
         </Flex>
       </Flex>
